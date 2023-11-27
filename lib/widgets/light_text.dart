@@ -7,13 +7,13 @@ class LightText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      textAlign: TextAlign.start,
       text,
       style: const TextStyle(
         color: Color(0xFF247CFF),
         fontSize: 24,
         fontFamily: 'Inter',
         fontWeight: FontWeight.w700,
-        height: 0.06,
       ),
     );
   }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 Widget defaultTextForm({
+  Widget? flag,
+  bool notMobile = true,
   required String label,
   required TextEditingController controller,
   bool obscureText = false,
   required TextInputType textInputType,
-  required IconData iconData,
+  IconData? iconData,
   bool isSuffix = false,
   void Function(String)? onSubmitted,
   void Function(String)? onChange,
@@ -20,9 +22,11 @@ Widget defaultTextForm({
       obscureText: obscureText,
       keyboardType: textInputType,
       decoration: InputDecoration(
-        prefixIcon: Icon(
-          iconData,
-        ),
+        prefixIcon: notMobile
+            ? Icon(
+                iconData,
+              )
+            : flag,
         labelText: label,
         suffixIcon: isSuffix
             ? GestureDetector(

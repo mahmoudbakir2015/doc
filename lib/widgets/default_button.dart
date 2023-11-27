@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constant/style.dart';
+
 // ignore: must_be_immutable
 class DefaultButton extends StatelessWidget {
   final String text;
@@ -13,11 +15,13 @@ class DefaultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 55,
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(Styles.borderRadius)),
+          backgroundColor: const Color(0xff247CFF),
         ),
         onPressed: onPressed,
         child: Text(
@@ -27,7 +31,6 @@ class DefaultButton extends StatelessWidget {
             fontSize: 16,
             fontFamily: 'Inter',
             fontWeight: FontWeight.w600,
-            height: 0.09,
           ),
         ),
       ),
