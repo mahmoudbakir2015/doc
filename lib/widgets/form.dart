@@ -29,12 +29,13 @@ class FormSheet extends StatefulWidget {
 
 class _FormSheetState extends State<FormSheet> {
   List<String> flags = [
-    Assets.apple,
+    Assets.palestine,
     Assets.england,
-    Assets.facebook,
-    Assets.google,
+    Assets.turkey,
+    Assets.egypt,
+    Assets.america,
   ];
-  String selectedFlag = Assets.england;
+  String selectedFlag = Assets.palestine;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -81,33 +82,28 @@ class _FormSheetState extends State<FormSheet> {
           ),
           !widget.isLogined
               ? defaultTextForm(
-                  flag: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 8,
-                      left: 8,
-                      bottom: 8,
-                      right: Styles.appPadding,
-                    ),
-                    child: DropdownButton<String>(
-                      icon: const Icon(Icons.keyboard_arrow_down_rounded),
-                      value: selectedFlag,
-                      onChanged: (newValue) {
-                        setState(
-                          () {
-                            selectedFlag = newValue!;
-                          },
-                        );
-                      },
-                      items: flags.map((String language) {
-                        return DropdownMenuItem<String>(
-                          value: language,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SvgPicture.asset(language),
+                  flag: DropdownButton<String>(
+                    icon: const Icon(Icons.keyboard_arrow_down_rounded),
+                    value: selectedFlag,
+                    onChanged: (newValue) {
+                      setState(
+                        () {
+                          selectedFlag = newValue!;
+                        },
+                      );
+                    },
+                    items: flags.map((String flag) {
+                      return DropdownMenuItem<String>(
+                        value: flag,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SvgPicture.asset(
+                            flag,
+                            width: 50,
                           ),
-                        );
-                      }).toList(),
-                    ),
+                        ),
+                      );
+                    }).toList(),
                   ),
                   notMobile: false,
                   label: 'Phone',
