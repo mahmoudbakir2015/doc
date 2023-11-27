@@ -1,11 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:doc/widgets/custom_phone_form.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:doc/widgets/custom_text_form.dart';
 
 import '../constant/assets.dart';
-import '../constant/style.dart';
 
 // ignore: must_be_immutable
 class FormSheet extends StatefulWidget {
@@ -28,14 +26,6 @@ class FormSheet extends StatefulWidget {
 }
 
 class _FormSheetState extends State<FormSheet> {
-  List<String> flags = [
-    Assets.palestine,
-    Assets.england,
-    Assets.turkey,
-    Assets.egypt,
-    Assets.america,
-  ];
-  String selectedFlag = Assets.palestine;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -81,44 +71,10 @@ class _FormSheetState extends State<FormSheet> {
             height: 20,
           ),
           !widget.isLogined
-              ? defaultTextForm(
-                  flag: DropdownButton<String>(
-                    icon: const Icon(Icons.keyboard_arrow_down_rounded),
-                    value: selectedFlag,
-                    onChanged: (newValue) {
-                      setState(
-                        () {
-                          selectedFlag = newValue!;
-                        },
-                      );
-                    },
-                    items: flags.map((String flag) {
-                      return DropdownMenuItem<String>(
-                        value: flag,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SvgPicture.asset(
-                            flag,
-                            width: 50,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                  notMobile: false,
-                  label: 'Phone',
-                  controller: widget.phone!,
-                  textInputType: TextInputType.phone,
-                  iconData: Icons.phone,
-                  onValidate: (String? value) {
-                    if (value!.isEmpty) {
-                      return "this field shouldn't be empty";
-                    } else if (value.length < 11) {
-                      return "Your number  should be greater than 11 nums";
-                    } else {
-                      return null;
-                    }
-                  },
+              ? PhoneForm(
+                  selectedFlag: Assets.selectedFlag,
+                  flags: Assets.flags,
+                  phone: widget.phone!,
                 )
               : const SizedBox(
                   height: 0,

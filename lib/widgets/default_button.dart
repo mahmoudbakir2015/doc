@@ -5,10 +5,10 @@ import '../constant/style.dart';
 // ignore: must_be_immutable
 class DefaultButton extends StatelessWidget {
   final String text;
-  void Function()? onPressed;
-  DefaultButton({
+  final Function() onPressed;
+  const DefaultButton({
     super.key,
-    this.onPressed,
+    required this.onPressed,
     required this.text,
   });
 
