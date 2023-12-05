@@ -10,7 +10,7 @@ import '../../../widgets/form.dart';
 import '../../../widgets/light_text.dart';
 import '../../../widgets/social_login.dart';
 import '../../../widgets/terms_cond.dart';
-import '../../home/home.dart';
+import '../../main_screen/main_screen.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -64,7 +64,7 @@ class _LoginState extends State<Login> {
                     if (formKey.currentState!.validate()) {
                       Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
-                          builder: (context) => const Home(),
+                          builder: (context) => const MainScreen(),
                         ),
                         (route) => false,
                       );

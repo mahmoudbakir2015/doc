@@ -142,6 +142,7 @@ Row buildRecomDoctor({
           height: 110,
           decoration: ShapeDecoration(
             image: DecorationImage(
+              alignment: Alignment.center,
               image: NetworkImage(docPhoto),
               fit: BoxFit.contain,
             ),

@@ -9,7 +9,7 @@ import '../../../widgets/form.dart';
 import '../../../widgets/light_text.dart';
 import '../../../widgets/social_login.dart';
 import '../../../widgets/terms_cond.dart';
-import '../../home/home.dart';
+import '../../main_screen/main_screen.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -65,7 +65,7 @@ class _RegisterState extends State<Register> {
                     if (formKey.currentState!.validate()) {
                       Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
-                          builder: (context) => const Home(),
+                          builder: (context) => const MainScreen(),
                         ),
                         (route) => false,
                       );
