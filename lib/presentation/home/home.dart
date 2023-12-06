@@ -25,6 +25,7 @@ class Home extends StatelessWidget {
         SizedBox(
           height: 100,
           child: ListView.separated(
+            physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             itemBuilder: (ctx, index) {
@@ -35,7 +36,7 @@ class Home extends StatelessWidget {
                 width: 25,
               );
             },
-            itemCount: 4,
+            itemCount: 5,
           ),
         ),
         const SizedBox(

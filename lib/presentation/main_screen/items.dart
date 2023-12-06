@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-buildIconNav({required String icon, required void Function() onTap}) {
+buildIconNav(
+    {required String icon, required void Function() onTap, Color? color}) {
   return SizedBox(
     width: 30,
     height: 60,
@@ -10,6 +11,7 @@ buildIconNav({required String icon, required void Function() onTap}) {
       child: SvgPicture.asset(
         icon,
         height: 35,
+        color: color,
       ),
     ),
   );

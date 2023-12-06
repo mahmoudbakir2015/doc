@@ -16,11 +16,11 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<Widget> screen = const [
-    Home(),
+  List<Widget> screen = [
+    const Home(),
     MessagesView(),
-    CalenderView(),
-    ProfilePage(),
+    const CalenderView(),
+    const ProfilePage(),
   ];
   int index = 0;
   @override
@@ -34,6 +34,7 @@ class _MainScreenState extends State<MainScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(children: [
           buildIconNav(
+              color: index == 0 ? Colors.blue : Colors.black,
               icon: Assets.home,
               onTap: () {
                 index = 0;
@@ -41,6 +42,7 @@ class _MainScreenState extends State<MainScreen> {
               }),
           const Spacer(flex: 1),
           buildIconNav(
+              color: index == 1 ? Colors.blue : Colors.black,
               icon: Assets.chat,
               onTap: () {
                 index = 1;
@@ -50,6 +52,7 @@ class _MainScreenState extends State<MainScreen> {
             flex: 2,
           ),
           buildIconNav(
+              color: index == 2 ? Colors.blue : Colors.black,
               icon: Assets.calender,
               onTap: () {
                 index = 2;
@@ -59,6 +62,7 @@ class _MainScreenState extends State<MainScreen> {
             flex: 1,
           ),
           buildIconNav(
+              color: index == 3 ? Colors.blue : Colors.black,
               icon: Assets.home,
               onTap: () {
                 index = 3;
