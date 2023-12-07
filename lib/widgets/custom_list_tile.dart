@@ -1,3 +1,4 @@
+import 'package:doc/presentation/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -18,7 +19,11 @@ class CustomListTile extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       leading: isMain
           ? GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => const MainScreen()),
+                    (route) => false);
+              },
               child: const Icon(
                 Icons.arrow_back_ios,
               ),

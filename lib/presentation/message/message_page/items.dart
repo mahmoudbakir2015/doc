@@ -1,8 +1,7 @@
 import 'package:doc/constant/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../widgets/custom_text_form.dart';
+import '../../../widgets/custom_text_form.dart';
 
 class CustomSearchFilter extends StatelessWidget {
   const CustomSearchFilter({
@@ -17,6 +16,7 @@ class CustomSearchFilter extends StatelessWidget {
     return Row(
       children: [
         Expanded(
+          flex: 14,
           child: defaultTextForm(
               iconData: Icons.search,
               label: 'Search',
@@ -24,9 +24,7 @@ class CustomSearchFilter extends StatelessWidget {
               onValidate: (String? value) {},
               textInputType: TextInputType.text),
         ),
-        const SizedBox(
-          width: 5,
-        ),
+        const Spacer(),
         GestureDetector(
           onTap: () {},
           child: const Icon(
@@ -44,13 +42,14 @@ ListTile buildDocCard({
   required String message,
   required String date,
   required String notReaded,
+  String? image,
 }) {
   return ListTile(
-    leading: const CircleAvatar(
+    leading: CircleAvatar(
       radius: 30,
       child: Image(
         image: NetworkImage(
-          Assets.docImage,
+          image ?? Assets.docImage,
         ),
         width: 30,
       ),

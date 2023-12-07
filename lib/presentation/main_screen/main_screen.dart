@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../constant/assets.dart';
 import '../calender/calender.dart';
 import '../home/home.dart';
-import '../message/message.dart';
+import '../message/message_page/messages_page.dart';
 import '../profile/profile.dart';
 
 class MainScreen extends StatefulWidget {
@@ -31,44 +31,49 @@ class _MainScreenState extends State<MainScreen> {
         child: screen[index],
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(children: [
-          buildIconNav(
-              color: index == 0 ? Colors.blue : Colors.black,
-              icon: Assets.home,
-              onTap: () {
-                index = 0;
-                setState(() {});
-              }),
-          const Spacer(flex: 1),
-          buildIconNav(
-              color: index == 1 ? Colors.blue : Colors.black,
-              icon: Assets.chat,
-              onTap: () {
-                index = 1;
-                setState(() {});
-              }),
-          const Spacer(
-            flex: 2,
-          ),
-          buildIconNav(
-              color: index == 2 ? Colors.blue : Colors.black,
-              icon: Assets.calender,
-              onTap: () {
-                index = 2;
-                setState(() {});
-              }),
-          const Spacer(
-            flex: 1,
-          ),
-          buildIconNav(
-              color: index == 3 ? Colors.blue : Colors.black,
-              icon: Assets.home,
-              onTap: () {
-                index = 3;
-                setState(() {});
-              }),
-        ]),
+        padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
+        child: Row(
+          children: [
+            buildIconNav(
+                color: index == 0 ? Colors.blue : Colors.black,
+                icon: Assets.home,
+                onTap: () {
+                  index = 0;
+                  setState(() {});
+                }),
+            const Spacer(flex: 1),
+            buildIconNav(
+                color: index == 1 ? Colors.blue : Colors.black,
+                icon: Assets.chat,
+                onTap: () {
+                  index = 1;
+                  setState(() {});
+                }),
+            const Spacer(
+              flex: 2,
+            ),
+            buildIconNav(
+                color: index == 2 ? Colors.blue : Colors.black,
+                icon: Assets.calender,
+                onTap: () {
+                  index = 2;
+                  setState(() {});
+                }),
+            const Spacer(
+              flex: 1,
+            ),
+            buildIconNav(
+                image:
+                    'https://th.bing.com/th/id/OIP.4siKIW3oZ4kEo0vkEVQ5hgHaLH?rs=1&pid=ImgDetMain',
+                isProfile: true,
+                color: index == 3 ? Colors.blue : Colors.black,
+                icon: Assets.home,
+                onTap: () {
+                  index = 3;
+                  setState(() {});
+                }),
+          ],
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: buildFloating(),
