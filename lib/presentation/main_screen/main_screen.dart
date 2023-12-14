@@ -26,10 +26,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
-        child: screen[index],
-      ),
+      body: screen[index],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
         child: Row(

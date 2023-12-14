@@ -16,6 +16,7 @@ abstract class Assets {
   static const String chat = 'assets/images/chat.svg';
   static const String messageAdd = 'assets/images/message-add.svg';
   static const String search = 'assets/images/search.svg';
+  static const String setting = 'assets/images/setting.svg';
   static const List<String> flags = [
     'assets/images/england.svg',
     'assets/images/america.svg',
