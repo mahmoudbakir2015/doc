@@ -13,12 +13,14 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   initState() {
-    Future.delayed(const Duration(seconds: 3))
-        .then((value) => Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) => MiddelWare(),
-            ),
-            (route) => false));
+    Future.delayed(const Duration(seconds: 3)).then(
+      (value) => Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => MiddelWare(),
+        ),
+        (route) => false,
+      ),
+    );
     super.initState();
   }
 

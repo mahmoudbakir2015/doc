@@ -1,17 +1,21 @@
-import 'package:doc/presentation/main_screen/main_screen.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+import 'package:doc/presentation/main_screen/main_screen.dart';
 
 // ignore: must_be_immutable
 class CustomListTile extends StatelessWidget {
   Widget? trailing;
   final String text;
   bool isMain;
+  bool isProfile;
   CustomListTile({
-    super.key,
+    Key? key,
     this.trailing,
-    this.isMain = true,
     required this.text,
-  });
+    this.isMain = true,
+    this.isProfile = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +28,9 @@ class CustomListTile extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const MainScreen()),
                     (route) => false);
               },
-              child: const Icon(
+              child: Icon(
                 Icons.arrow_back_ios,
+                color: isProfile ? Colors.white : Colors.black,
               ),
             )
           : GestureDetector(
@@ -39,8 +44,8 @@ class CustomListTile extends StatelessWidget {
       title: Center(
         child: Text(
           text,
-          style: const TextStyle(
-            color: Color(0xFF242424),
+          style: TextStyle(
+            color: isProfile ? Colors.white : const Color(0xFF242424),
             fontSize: 18,
             fontFamily: 'Inter',
             fontWeight: FontWeight.w600,

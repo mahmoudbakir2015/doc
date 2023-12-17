@@ -72,13 +72,17 @@ class _CalenderViewState extends State<CalenderView>
             child: TabBarView(
               controller: _tabController,
               children: [
-                // first tab bar view widget
+                // upcoming tab bar view widget
                 ListView.separated(
                   itemBuilder: (ctx, index) {
-                    return buildDocContainer(
-                        name: 'Dr. Randy Wigham',
-                        subDetails: 'General Medical Checkup',
-                        date: 'Wed, 17 May | 08.30 AM');
+                    return buildDocUpComing(
+                      name: 'Dr. Randy Wigham',
+                      subDetails: 'General Medical Checkup',
+                      date: 'Wed, 17 May | 08.30 AM',
+                      onCancel: () {},
+                      onRechedule: () {},
+                      chatTap: () {},
+                    );
                   },
                   separatorBuilder: (ctx, index) {
                     return const Divider(
@@ -88,13 +92,10 @@ class _CalenderViewState extends State<CalenderView>
                   itemCount: 10,
                 ),
 
-                // second tab bar view widget
+                // completed tab bar view widget
                 ListView.separated(
                   itemBuilder: (ctx, index) {
-                    return buildDocContainer(
-                        name: 'Dr. Randy Wigham',
-                        subDetails: 'General Medical Checkup',
-                        date: 'Wed, 17 May | 08.30 AM');
+                    return buildStatusAppointment();
                   },
                   separatorBuilder: (ctx, index) {
                     return const Divider(
@@ -103,13 +104,10 @@ class _CalenderViewState extends State<CalenderView>
                   },
                   itemCount: 10,
                 ),
-                // Third tab bar view widget
+                // canceled tab bar view widget
                 ListView.separated(
                   itemBuilder: (ctx, index) {
-                    return buildDocContainer(
-                        name: 'Dr. Randy Wigham',
-                        subDetails: 'General Medical Checkup',
-                        date: 'Wed, 17 May | 08.30 AM');
+                    return buildStatusAppointment(isCompleted: false);
                   },
                   separatorBuilder: (ctx, index) {
                     return const Divider(

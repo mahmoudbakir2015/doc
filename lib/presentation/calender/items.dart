@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../constant/assets.dart';
+import '../../widgets/doc_info.dart';
 
-SizedBox buildDocContainer({
+SizedBox buildDocUpComing({
   required String name,
   required String subDetails,
   required String date,
   String? image,
   void Function()? chatTap,
+  required void Function() onCancel,
+  required void Function() onRechedule,
 }) {
   return SizedBox(
     width: double.infinity,
@@ -16,7 +19,7 @@ SizedBox buildDocContainer({
       children: [
         ListTile(
           leading: Container(
-            width: 90,
+            width: 100,
             decoration: BoxDecoration(
                 color: Colors.grey, borderRadius: BorderRadius.circular(6)),
             child: Image(
@@ -24,7 +27,7 @@ SizedBox buildDocContainer({
               image: NetworkImage(
                 image ?? Assets.docImage,
               ),
-              width: 30,
+              width: 100 / 3,
             ),
           ),
           title: Column(
@@ -68,8 +71,12 @@ SizedBox buildDocContainer({
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               GestureDetector(
-                  onTap: chatTap,
-                  child: SvgPicture.asset(Assets.chat, color: Colors.blue)),
+                onTap: chatTap,
+                child: SvgPicture.asset(
+                  Assets.chat,
+                  color: Colors.blue,
+                ),
+              ),
             ],
           ),
         ),
@@ -77,11 +84,18 @@ SizedBox buildDocContainer({
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Row(
             children: [
-              Expanded(child: buildAppointmentButton()),
+              Expanded(
+                  child: buildAppointmentButton(
+                onPressed: onCancel,
+              )),
               const SizedBox(
                 width: 10,
               ),
-              Expanded(child: buildAppointmentButton(isCancel: false)),
+              Expanded(
+                  child: buildAppointmentButton(
+                isCancel: false,
+                onPressed: onRechedule,
+              )),
             ],
           ),
         ),
@@ -90,9 +104,10 @@ SizedBox buildDocContainer({
   );
 }
 
-ElevatedButton buildAppointmentButton({bool isCancel = true}) {
+ElevatedButton buildAppointmentButton(
+    {bool isCancel = true, required void Function() onPressed}) {
   return ElevatedButton(
-    onPressed: () {},
+    onPressed: onPressed,
     style: ElevatedButton.styleFrom(
         backgroundColor: isCancel ? Colors.white : Colors.blue,
         side: const BorderSide(color: Colors.blue)),
@@ -102,5 +117,67 @@ ElevatedButton buildAppointmentButton({bool isCancel = true}) {
         color: isCancel ? Colors.blue : Colors.white,
       ),
     ),
+  );
+}
+
+buildStatusAppointment({void Function()? onTap, bool isCompleted = true}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      ListTile(
+        title: Text(
+          isCompleted ? 'Appointment done' : 'Appointment cancelled',
+          style: TextStyle(
+            color:
+                isCompleted ? const Color(0xFF22C55E) : const Color(0xFFFF4C5E),
+            fontSize: 12,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.20,
+          ),
+        ),
+        subtitle: const Row(
+          children: [
+            Text(
+              'Wed, 17 May  | ',
+              style: TextStyle(
+                color: Color(0xFF616161),
+                fontSize: 12,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w500,
+                letterSpacing: 0.20,
+              ),
+            ),
+            Text(
+              '08.30 AM',
+              style: TextStyle(
+                color: Color(0xFF616161),
+                fontSize: 12,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w500,
+                letterSpacing: 0.20,
+              ),
+            )
+          ],
+        ),
+        trailing: GestureDetector(
+          onTap: onTap,
+          child: const Icon(
+            Icons.list,
+          ),
+        ),
+      ),
+      buildDocInfo(
+        docPhoto: Assets.docImage,
+        name: 'Dr. Randy Wigham',
+        type: 'General',
+        description: 'RSUD Gatot Subroto',
+        rate: '4.8',
+        numReviews: '4,279',
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+    ],
   );
 }

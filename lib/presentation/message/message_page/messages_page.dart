@@ -30,7 +30,12 @@ class MessagesView extends StatelessWidget {
               ),
             ),
           ),
-          CustomSearchFilter(controller: search),
+          SizedBox(
+            height: 50,
+            child: CustomSearchFilter(
+              controller: search,
+            ),
+          ),
           Expanded(
             child: ListView.separated(
               physics: const BouncingScrollPhysics(),

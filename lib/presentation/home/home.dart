@@ -1,8 +1,8 @@
 import 'package:doc/constant/assets.dart';
 import 'package:doc/presentation/home/items.dart';
 import 'package:flutter/material.dart';
-
 import '../../constant/style.dart';
+import '../../widgets/doc_info.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -52,7 +52,7 @@ class Home extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (ctx, index) {
-                return buildRecomDoctor(
+                return buildDocInfo(
                   docPhoto: Assets.docImage,
                   name: 'Dr. Randy Wigham',
                   type: 'General',

@@ -39,9 +39,9 @@ Container buildFloating() {
         borderRadius: BorderRadius.circular(27.92),
       ),
     ),
-    child: const Center(
-      child: Icon(
-        Icons.search,
+    child: Center(
+      child: SvgPicture.asset(
+        Assets.search,
         color: Colors.white,
       ),
     ),

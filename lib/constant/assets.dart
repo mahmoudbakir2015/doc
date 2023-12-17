@@ -17,6 +17,10 @@ abstract class Assets {
   static const String messageAdd = 'assets/images/message-add.svg';
   static const String search = 'assets/images/search.svg';
   static const String setting = 'assets/images/setting.svg';
+  static const String edit = 'assets/images/edit.svg';
+  static const String diagnostic = 'assets/images/diagnostic.svg';
+  static const String payment = 'assets/images/payment.svg';
+  static const String personalCard = 'assets/images/personal_card.svg';
   static const List<String> flags = [
     'assets/images/england.svg',
     'assets/images/america.svg',
