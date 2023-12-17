@@ -155,33 +155,3 @@ SizedBox buildSpeciality({required String type, required String icon}) {
     ),
   );
 }
-
-Row buildTextTile({required String text, required void Function()? onTap}) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text(
-        text,
-        style: const TextStyle(
-          color: Color(0xFF242424),
-          fontSize: 18,
-          fontFamily: 'Inter',
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-      GestureDetector(
-        onTap: onTap,
-        child: const Text(
-          'See All',
-          textAlign: TextAlign.right,
-          style: TextStyle(
-            color: Color(0xFF247CFF),
-            fontSize: 12,
-            fontFamily: 'Inter',
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-      )
-    ],
-  );
-}

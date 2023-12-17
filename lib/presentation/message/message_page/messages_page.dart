@@ -2,9 +2,9 @@ import 'package:doc/constant/assets.dart';
 import 'package:doc/presentation/message/message_page/items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../constant/style.dart';
 import '../../../widgets/custom_list_tile.dart';
+import '../../../widgets/custom_search_filter.dart';
 
 // ignore: must_be_immutable
 class MessagesView extends StatelessWidget {

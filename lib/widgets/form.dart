@@ -36,7 +36,7 @@ class _FormSheetState extends State<FormSheet> {
             label: 'Email',
             controller: widget.email,
             textInputType: TextInputType.emailAddress,
-            iconData: Icons.email,
+            widget: const Icon(Icons.email),
             onValidate: (String? value) {
               if (value!.isEmpty) {
                 return "this field shouldn't be empty";
@@ -56,7 +56,7 @@ class _FormSheetState extends State<FormSheet> {
             label: 'password',
             controller: widget.password,
             textInputType: TextInputType.emailAddress,
-            iconData: Icons.password,
+            widget: const Icon(Icons.password),
             onValidate: (String? value) {
               if (value!.isEmpty) {
                 return "this field shouldn't be empty";

@@ -2,6 +2,7 @@ import 'package:doc/constant/assets.dart';
 import 'package:doc/presentation/home/items.dart';
 import 'package:flutter/material.dart';
 import '../../constant/style.dart';
+import '../../widgets/custom_text_tile.dart';
 import '../../widgets/doc_info.dart';
 
 class Home extends StatelessWidget {

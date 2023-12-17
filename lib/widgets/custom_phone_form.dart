@@ -48,7 +48,7 @@ class _PhoneFormState extends State<PhoneForm> {
       label: 'Phone',
       controller: widget.phone,
       textInputType: TextInputType.phone,
-      iconData: Icons.phone,
+      widget: const Icon(Icons.phone),
       onValidate: (String? value) {
         if (value!.isEmpty) {
           return "this field shouldn't be empty";

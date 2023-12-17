@@ -8,12 +8,14 @@ class CustomListTile extends StatelessWidget {
   Widget? trailing;
   final String text;
   bool isMain;
+  bool isSearch;
   bool isProfile;
   CustomListTile({
     Key? key,
     this.trailing,
     required this.text,
     this.isMain = true,
+    this.isSearch = false,
     this.isProfile = false,
   }) : super(key: key);
 
@@ -52,7 +54,7 @@ class CustomListTile extends StatelessWidget {
           ),
         ),
       ),
-      trailing: trailing,
+      trailing: !isSearch ? trailing : null,
     );
   }
 }

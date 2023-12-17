@@ -7,6 +7,7 @@ import '../calender/calender.dart';
 import '../home/home.dart';
 import '../message/message_page/messages_page.dart';
 import '../profile/profile.dart';
+import '../search/search.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -19,6 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> screen = [
     const Home(),
     MessagesView(),
+    SearchView(),
     const CalenderView(),
     const ProfilePage(),
   ];
@@ -50,10 +52,10 @@ class _MainScreenState extends State<MainScreen> {
               flex: 2,
             ),
             buildIconNav(
-                color: index == 2 ? Colors.blue : Colors.black,
+                color: index == 3 ? Colors.blue : Colors.black,
                 icon: Assets.calender,
                 onTap: () {
-                  index = 2;
+                  index = 3;
                   setState(() {});
                 }),
             const Spacer(
@@ -63,17 +65,22 @@ class _MainScreenState extends State<MainScreen> {
                 image:
                     'https://th.bing.com/th/id/OIP.4siKIW3oZ4kEo0vkEVQ5hgHaLH?rs=1&pid=ImgDetMain',
                 isProfile: true,
-                color: index == 3 ? Colors.blue : Colors.black,
+                color: index == 4 ? Colors.blue : Colors.black,
                 icon: Assets.home,
                 onTap: () {
-                  index = 3;
+                  index = 4;
                   setState(() {});
                 }),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: buildFloating(),
+      floatingActionButton: GestureDetector(
+          onTap: () {
+            index = 2;
+            setState(() {});
+          },
+          child: buildFloating()),
     );
   }
 }

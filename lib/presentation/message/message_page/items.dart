@@ -1,41 +1,6 @@
 import 'package:doc/constant/assets.dart';
 import 'package:flutter/material.dart';
 
-import '../../../widgets/custom_text_form.dart';
-
-class CustomSearchFilter extends StatelessWidget {
-  const CustomSearchFilter({
-    super.key,
-    required this.controller,
-  });
-
-  final TextEditingController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 14,
-          child: defaultTextForm(
-              iconData: Icons.search,
-              label: 'Search',
-              controller: controller,
-              onValidate: (String? value) {},
-              textInputType: TextInputType.text),
-        ),
-        const Spacer(),
-        GestureDetector(
-          onTap: () {},
-          child: const Icon(
-            Icons.filter_list,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 ListTile buildDocCard({
   required String name,
   required String subDetails,
