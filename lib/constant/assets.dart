@@ -24,6 +24,9 @@ abstract class Assets {
   static const String person = 'assets/images/person.svg';
   static const String phoneCall = 'assets/images/phone_call.svg';
   static const String videoCall = 'assets/images/video_call.svg';
+  static const String success = 'assets/images/success.svg';
+  static const String clipboard = 'assets/images/clipboard.svg';
+
   static const List<String> flags = [
     'assets/images/england.svg',
     'assets/images/america.svg',

@@ -3,7 +3,7 @@ import 'package:doc/presentation/main_screen/items.dart';
 import 'package:flutter/material.dart';
 
 import '../../constant/assets.dart';
-import '../calender/calender.dart';
+import '../my_appointment/calender/calender.dart';
 import '../home/home.dart';
 import '../message/message_page/messages_page.dart';
 import '../profile/profile.dart';

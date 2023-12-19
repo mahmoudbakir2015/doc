@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../constant/assets.dart';
-import '../../widgets/doc_info.dart';
+import '../../../constant/assets.dart';
+import '../../../widgets/doc_info.dart';
 
-SizedBox buildDocUpComing({
+Padding buildDocUpComing({
   required String name,
   required String subDetails,
   required String date,
@@ -13,8 +13,8 @@ SizedBox buildDocUpComing({
   required void Function() onCancel,
   required void Function() onRechedule,
 }) {
-  return SizedBox(
-    width: double.infinity,
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 30.0),
     child: Column(
       children: [
         ListTile(
@@ -80,24 +80,21 @@ SizedBox buildDocUpComing({
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Row(
-            children: [
-              Expanded(
-                  child: buildAppointmentButton(
-                onPressed: onCancel,
-              )),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                  child: buildAppointmentButton(
-                isCancel: false,
-                onPressed: onRechedule,
-              )),
-            ],
-          ),
+        Row(
+          children: [
+            Expanded(
+                child: buildAppointmentButton(
+              onPressed: onCancel,
+            )),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+                child: buildAppointmentButton(
+              isCancel: false,
+              onPressed: onRechedule,
+            )),
+          ],
         ),
       ],
     ),
@@ -112,72 +109,76 @@ ElevatedButton buildAppointmentButton(
         backgroundColor: isCancel ? Colors.white : Colors.blue,
         side: const BorderSide(color: Colors.blue)),
     child: Text(
+      maxLines: 1,
       isCancel ? 'Cancel Appointment' : 'Reschedule',
       style: TextStyle(
+        overflow: TextOverflow.ellipsis,
         color: isCancel ? Colors.blue : Colors.white,
+        fontSize: 12,
       ),
     ),
   );
 }
 
 buildStatusAppointment({void Function()? onTap, bool isCompleted = true}) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      ListTile(
-        title: Text(
-          isCompleted ? 'Appointment done' : 'Appointment cancelled',
-          style: TextStyle(
-            color:
-                isCompleted ? const Color(0xFF22C55E) : const Color(0xFFFF4C5E),
-            fontSize: 12,
-            fontFamily: 'Inter',
-            fontWeight: FontWeight.w400,
-            letterSpacing: 0.20,
-          ),
-        ),
-        subtitle: const Row(
-          children: [
-            Text(
-              'Wed, 17 May  | ',
-              style: TextStyle(
-                color: Color(0xFF616161),
-                fontSize: 12,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w500,
-                letterSpacing: 0.20,
-              ),
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 30),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ListTile(
+          title: Text(
+            isCompleted ? 'Appointment done' : 'Appointment cancelled',
+            style: TextStyle(
+              color: isCompleted
+                  ? const Color(0xFF22C55E)
+                  : const Color(0xFFFF4C5E),
+              fontSize: 12,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w400,
+              letterSpacing: 0.20,
             ),
-            Text(
-              '08.30 AM',
-              style: TextStyle(
-                color: Color(0xFF616161),
-                fontSize: 12,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w500,
-                letterSpacing: 0.20,
+          ),
+          subtitle: const Row(
+            children: [
+              Text(
+                'Wed, 17 May  | ',
+                style: TextStyle(
+                  color: Color(0xFF616161),
+                  fontSize: 12,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0.20,
+                ),
               ),
-            )
-          ],
-        ),
-        trailing: GestureDetector(
-          onTap: onTap,
-          child: const Icon(
-            Icons.list,
+              Text(
+                '08.30 AM',
+                style: TextStyle(
+                  color: Color(0xFF616161),
+                  fontSize: 12,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0.20,
+                ),
+              )
+            ],
+          ),
+          trailing: GestureDetector(
+            onTap: onTap,
+            child: const Icon(
+              Icons.list,
+            ),
           ),
         ),
-      ),
-      buildDocInfo(
-        docPhoto: Assets.docImage,
-        name: 'Dr. Randy Wigham',
-        type: 'General',
-        description: 'RSUD Gatot Subroto',
-        rate: '4.8',
-        numReviews: '4,279',
-      ),
-      const SizedBox(
-        height: 20,
-      ),
-    ],
+        buildDocInfo(
+          docPhoto: Assets.docImage,
+          name: 'Dr. Randy Wigham',
+          type: 'General',
+          description: 'RSUD Gatot Subroto',
+          rate: '4.8',
+          numReviews: '4,279',
+        ),
+      ],
+    ),
   );
 }

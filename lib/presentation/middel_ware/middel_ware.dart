@@ -1,3 +1,4 @@
+import 'package:doc/constant/style.dart';
 import 'package:doc/presentation/middel_ware/item.dart';
 import 'package:doc/widgets/water_mark.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,8 @@ class MiddelWare extends StatelessWidget {
           const WaterMark(),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 50,
+              horizontal: Styles.appPadding,
+              vertical: 10,
             ),
             child: buildContent(context),
           ),

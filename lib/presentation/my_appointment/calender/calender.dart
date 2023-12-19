@@ -1,11 +1,9 @@
 import 'package:doc/constant/assets.dart';
 import 'package:doc/constant/style.dart';
-import 'package:doc/presentation/calender/items.dart';
+import 'package:doc/presentation/my_appointment/calender/items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../widgets/custom_list_tile.dart';
-import '../../widgets/custom_space.dart';
+import '../../../widgets/custom_list_tile.dart';
 import '../reschedule/reschedule.dart';
 
 class CalenderView extends StatefulWidget {
@@ -33,11 +31,13 @@ class _CalenderViewState extends State<CalenderView>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
+      padding: const EdgeInsets.only(
+        left: Styles.appPadding,
+        right: Styles.appPadding,
+        top: Styles.appPadding,
+      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildCustomSpace(context),
           CustomListTile(
             text: 'My Appointment',
             trailing: GestureDetector(

@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constant/style.dart';
 import '../../../widgets/custom_list_tile.dart';
 import '../../../widgets/custom_search_filter.dart';
-import '../../../widgets/custom_space.dart';
 
 // ignore: must_be_immutable
 class MessagesView extends StatelessWidget {
@@ -15,11 +14,13 @@ class MessagesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: const EdgeInsets.only(
+        left: Styles.appPadding,
+        right: Styles.appPadding,
+        top: Styles.appPadding,
+      ),
+      child: ListView(
         children: [
-          buildCustomSpace(context),
           CustomListTile(
             text: 'Message',
             trailing: GestureDetector(
@@ -34,6 +35,9 @@ class MessagesView extends StatelessWidget {
             child: CustomSearchFilter(
               controller: search,
             ),
+          ),
+          const SizedBox(
+            height: 10,
           ),
           Expanded(
             child: ListView.separated(
@@ -56,6 +60,10 @@ class MessagesView extends StatelessWidget {
               },
               itemCount: 20,
             ),
+          ),
+          Container(
+            height: 40,
+            color: Colors.transparent,
           ),
         ],
       ),

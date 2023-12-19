@@ -11,13 +11,14 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
+      padding: const EdgeInsets.only(
+        left: Styles.appPadding,
+        right: Styles.appPadding,
+        top: Styles.appPadding,
+      ),
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          const SizedBox(
-            height: 40,
-          ),
           buildNotification(),
           const SizedBox(
             height: 30,
@@ -57,13 +58,16 @@ class Home extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (ctx, index) {
-                return buildDocInfo(
-                  docPhoto: Assets.docImage,
-                  name: 'Dr. Randy Wigham',
-                  type: 'General',
-                  description: 'RSUD Gatot Subroto',
-                  rate: '4.8',
-                  numReviews: '4,279',
+                return GestureDetector(
+                  onTap: () {},
+                  child: buildDocInfo(
+                    docPhoto: Assets.docImage,
+                    name: 'Dr. Randy Wigham',
+                    type: 'General',
+                    description: 'RSUD Gatot Subroto',
+                    rate: '4.8',
+                    numReviews: '4,279',
+                  ),
                 );
               },
               separatorBuilder: (ctx, index) {
@@ -73,6 +77,10 @@ class Home extends StatelessWidget {
               },
               itemCount: 5,
             ),
+          ),
+          Container(
+            height: 40,
+            color: Colors.transparent,
           ),
         ],
       ),

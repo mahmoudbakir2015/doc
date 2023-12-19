@@ -1,11 +1,12 @@
 import 'package:doc/constant/style.dart';
-import 'package:doc/presentation/reschedule/items.dart';
+import 'package:doc/presentation/my_appointment/reschedule/items.dart';
 import 'package:flutter/material.dart';
-import '../../constant/constants.dart';
-import '../../widgets/custom_list_tile.dart';
-import '../../widgets/custom_space.dart';
-import '../../widgets/custom_text_tile.dart';
-import '../../widgets/default_button.dart';
+import '../../../constant/constants.dart';
+import '../../../widgets/custom_list_tile.dart';
+import '../../../widgets/custom_text_tile.dart';
+import '../../../widgets/default_button.dart';
+import '../details/details.dart';
+import '../items.dart';
 
 class Reschedule extends StatefulWidget {
   const Reschedule({super.key});
@@ -34,27 +35,29 @@ class _RescheduleState extends State<Reschedule> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
+        padding: const EdgeInsets.all(Styles.appPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildCustomSpace(context),
             CustomListTile(
               text: 'Reschedule',
             ),
-            buildTextTile(
-              mainText: 'Select Date',
-              subText: 'Set Manual',
-              onTap: () {
-                setState(() {
-                  currentDateSelectedIndex = 0;
-                  activeAppointment = 0;
-                  chooseTime = 0;
-                });
-              },
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: buildTextTile(
+                mainText: 'Select Date',
+                subText: 'Set Manual',
+                onTap: () {
+                  setState(() {
+                    currentDateSelectedIndex = 0;
+                    activeAppointment = 0;
+                    chooseTime = 0;
+                  });
+                },
+              ),
             ),
             Expanded(
-              flex: 3,
+              flex: 4,
               child: ListView.separated(
                 separatorBuilder: (BuildContext context, int index) {
                   return const SizedBox(width: 15);
@@ -82,11 +85,11 @@ class _RescheduleState extends State<Reschedule> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: Styles.appPadding),
+              padding: const EdgeInsets.only(top: 5.0),
               child: buildBoldText(text: 'Available time'),
             ),
             Expanded(
-              flex: 6,
+              flex: 9,
               child: GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -110,11 +113,11 @@ class _RescheduleState extends State<Reschedule> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: Styles.appPadding),
+              padding: const EdgeInsets.only(top: 5),
               child: buildBoldText(text: 'Appointment Type'),
             ),
             Expanded(
-              flex: 6,
+              flex: 9,
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (ctx, index) {
@@ -137,6 +140,19 @@ class _RescheduleState extends State<Reschedule> {
             const Spacer(),
             DefaultButton(
               onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => RescheduleDetails(
+                      bookDetails: {
+                        'date':
+                            '${selectedDate.weekday},${selectedDate.day} ${selectedDate.month} ${selectedDate.year}',
+                        'available Time': availableTime[chooseTime],
+                        'Appointment Type': Constants
+                            .appointmentType[activeAppointment]['text'],
+                      },
+                    ),
+                  ),
+                );
                 print(
                   {
                     'date': selectedDate,
@@ -147,9 +163,6 @@ class _RescheduleState extends State<Reschedule> {
                 );
               },
               text: 'Reschedule',
-            ),
-            const SizedBox(
-              height: 20,
             ),
           ],
         ),

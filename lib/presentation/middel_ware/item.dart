@@ -41,9 +41,7 @@ Column buildContent(BuildContext context) {
           fontWeight: FontWeight.w400,
         ),
       ),
-      const SizedBox(
-        height: 30,
-      ),
+      const Spacer(),
       DefaultButton(
         text: 'Get Started',
         onPressed: () {
