@@ -1,8 +1,7 @@
 import 'package:doc/constant/style.dart';
 import 'package:doc/presentation/reschedule/items.dart';
 import 'package:flutter/material.dart';
-
-import '../../constant/assets.dart';
+import '../../constant/constants.dart';
 import '../../widgets/custom_list_tile.dart';
 import '../../widgets/custom_space.dart';
 import '../../widgets/custom_text_tile.dart';
@@ -23,37 +22,6 @@ class _RescheduleState extends State<Reschedule> {
   ScrollController scrollController = ScrollController();
   DateTime selectedDate = DateTime.now();
 
-  List<String> listOfMonths = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ];
-
-  List<String> listOfDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-
-  List<Map<String, String>> appointmentType = [
-    {
-      'icon': Assets.person,
-      'text': 'In person',
-    },
-    {
-      'icon': Assets.videoCall,
-      'text': 'Video Call',
-    },
-    {
-      'icon': Assets.phoneCall,
-      'text': 'Phone Call',
-    },
-  ];
   List availableTime = [
     '08:00',
     '08:30',
@@ -86,7 +54,7 @@ class _RescheduleState extends State<Reschedule> {
               },
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: ListView.separated(
                 separatorBuilder: (BuildContext context, int index) {
                   return const SizedBox(width: 15);
@@ -106,8 +74,8 @@ class _RescheduleState extends State<Reschedule> {
                     child: buildDate(
                       index: index,
                       currentDateSelectedIndex: currentDateSelectedIndex,
-                      listOfMonths: listOfMonths,
-                      listOfDays: listOfDays,
+                      listOfMonths: Constants.listOfMonths,
+                      listOfDays: Constants.listOfDays,
                     ),
                   );
                 },
@@ -118,7 +86,7 @@ class _RescheduleState extends State<Reschedule> {
               child: buildBoldText(text: 'Available time'),
             ),
             Expanded(
-              flex: 5,
+              flex: 6,
               child: GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -141,9 +109,12 @@ class _RescheduleState extends State<Reschedule> {
                 itemCount: availableTime.length,
               ),
             ),
-            buildBoldText(text: 'Appointment Type'),
+            Padding(
+              padding: const EdgeInsets.only(top: Styles.appPadding),
+              child: buildBoldText(text: 'Appointment Type'),
+            ),
             Expanded(
-              flex: 5,
+              flex: 6,
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (ctx, index) {
@@ -153,24 +124,25 @@ class _RescheduleState extends State<Reschedule> {
                       activeAppointment = index;
                     },
                     child: CustomChooseTile(
-                      icon: appointmentType[index]['icon'].toString(),
-                      text: appointmentType[index]['text'].toString(),
+                      icon: Constants.appointmentType[index]['icon'].toString(),
+                      text: Constants.appointmentType[index]['text'].toString(),
                       choose: index,
                       active: activeAppointment,
                     ),
                   );
                 },
-                itemCount: appointmentType.length,
+                itemCount: Constants.appointmentType.length,
               ),
             ),
+            const Spacer(),
             DefaultButton(
               onPressed: () {
                 print(
                   {
                     'date': selectedDate,
                     'available Time': availableTime[chooseTime],
-                    'Appointment Type': appointmentType[activeAppointment]
-                        ['text'],
+                    'Appointment Type':
+                        Constants.appointmentType[activeAppointment]['text'],
                   },
                 );
               },
