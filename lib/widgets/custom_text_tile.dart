@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-Row buildTextTile(
-    {required String text,
-    required void Function()? onTap,
-    bool isSearch = false}) {
+Row buildTextTile({
+  required String mainText,
+  required String subText,
+  required void Function()? onTap,
+}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Text(
-        text,
+        mainText,
         style: const TextStyle(
           color: Color(0xFF242424),
           fontSize: 18,
@@ -19,7 +20,7 @@ Row buildTextTile(
       GestureDetector(
         onTap: onTap,
         child: Text(
-          !isSearch ? 'See All' : 'Clear All History',
+          subText,
           textAlign: TextAlign.right,
           style: const TextStyle(
             color: Color(0xFF247CFF),

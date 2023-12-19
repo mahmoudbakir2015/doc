@@ -21,6 +21,9 @@ abstract class Assets {
   static const String diagnostic = 'assets/images/diagnostic.svg';
   static const String payment = 'assets/images/payment.svg';
   static const String personalCard = 'assets/images/personal_card.svg';
+  static const String person = 'assets/images/person.svg';
+  static const String phoneCall = 'assets/images/phone_call.svg';
+  static const String videoCall = 'assets/images/video_call.svg';
   static const List<String> flags = [
     'assets/images/england.svg',
     'assets/images/america.svg',

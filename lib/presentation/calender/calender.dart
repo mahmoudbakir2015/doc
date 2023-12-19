@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../widgets/custom_list_tile.dart';
+import '../../widgets/custom_space.dart';
+import '../reschedule/reschedule.dart';
 
 class CalenderView extends StatefulWidget {
   const CalenderView({super.key});
@@ -35,9 +37,7 @@ class _CalenderViewState extends State<CalenderView>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 40,
-          ),
+          buildCustomSpace(context),
           CustomListTile(
             text: 'My Appointment',
             trailing: GestureDetector(
@@ -80,7 +80,13 @@ class _CalenderViewState extends State<CalenderView>
                       subDetails: 'General Medical Checkup',
                       date: 'Wed, 17 May | 08.30 AM',
                       onCancel: () {},
-                      onRechedule: () {},
+                      onRechedule: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const Reschedule(),
+                          ),
+                        );
+                      },
                       chatTap: () {},
                     );
                   },

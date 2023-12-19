@@ -26,7 +26,8 @@ class Home extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          buildTextTile(text: 'Doctor Speciality', onTap: () {}),
+          buildTextTile(
+              mainText: 'Doctor Speciality', onTap: () {}, subText: 'see All'),
           SizedBox(
             height: 100,
             child: ListView.separated(
@@ -47,7 +48,10 @@ class Home extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          buildTextTile(text: 'Recommendation Doctor', onTap: () {}),
+          buildTextTile(
+              mainText: 'Recommendation Doctor',
+              onTap: () {},
+              subText: 'see All'),
           Expanded(
             child: ListView.separated(
               physics: const NeverScrollableScrollPhysics(),

@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constant/style.dart';
 import '../../../widgets/custom_list_tile.dart';
 import '../../../widgets/custom_search_filter.dart';
+import '../../../widgets/custom_space.dart';
 
 // ignore: must_be_immutable
 class MessagesView extends StatelessWidget {
@@ -18,9 +19,7 @@ class MessagesView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 40,
-          ),
+          buildCustomSpace(context),
           CustomListTile(
             text: 'Message',
             trailing: GestureDetector(

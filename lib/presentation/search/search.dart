@@ -40,12 +40,12 @@ class _SearchViewState extends State<SearchView> {
               height: MediaQuery.of(context).size.width * 0.09,
             ),
             buildTextTile(
-              text: 'Recent Search',
-              isSearch: true,
+              mainText: 'Recent Search',
               onTap: () {
                 widget.itemCount = 0;
                 setState(() {});
               },
+              subText: 'Clear All History',
             ),
             SizedBox(
               height: MediaQuery.of(context).size.width * 0.01,
