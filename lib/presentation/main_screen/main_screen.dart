@@ -3,9 +3,9 @@ import 'package:doc/presentation/main_screen/items.dart';
 import 'package:flutter/material.dart';
 
 import '../../constant/assets.dart';
-import '../my_appointment/calender/calender.dart';
-import '../home/home.dart';
-import '../message/message_page/messages_page.dart';
+import '../my_appointment/my_appointment_screen/my_appointment_screen.dart';
+import '../home/home_screen/home_screen.dart';
+import '../chat/message_page/messages_page.dart';
 import '../profile/profile.dart';
 import '../search/search.dart';
 
@@ -21,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
     const Home(),
     MessagesView(),
     SearchView(),
-    const CalenderView(),
+    const AppointmentView(),
     const ProfilePage(),
   ];
   int index = 0;

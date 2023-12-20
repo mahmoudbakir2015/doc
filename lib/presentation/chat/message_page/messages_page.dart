@@ -1,5 +1,5 @@
 import 'package:doc/constant/assets.dart';
-import 'package:doc/presentation/message/message_page/items.dart';
+import 'package:doc/presentation/chat/message_page/items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constant/style.dart';
@@ -44,7 +44,8 @@ class MessagesView extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (ctx, index) {
-                return buildDocCard(
+                return buildNotificationCard(
+                  image: Assets.docImage,
                   name: 'Dr. Randy Wigham',
                   subDetails: 'General Doctor | RSUD Gatot Subroto',
                   message:

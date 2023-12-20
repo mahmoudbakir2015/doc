@@ -1,23 +1,29 @@
 import 'package:doc/constant/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
-ListTile buildDocCard({
+ListTile buildNotificationCard({
   required String name,
   required String subDetails,
   required String message,
   required String date,
   required String notReaded,
+  bool isNotifi = false,
+  bool isMessage = true,
   String? image,
+  String? icon,
 }) {
   return ListTile(
     leading: CircleAvatar(
       radius: 30,
-      child: Image(
-        image: NetworkImage(
-          image ?? Assets.docImage,
-        ),
-        width: 30,
-      ),
+      child: isMessage
+          ? Image(
+              image: NetworkImage(
+                image ?? Assets.docImage,
+              ),
+              width: 30,
+            )
+          : SvgPicture.asset(icon ?? Assets.clipboard),
     ),
     title: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,27 +74,32 @@ ListTile buildDocCard({
             fontWeight: FontWeight.w400,
           ),
         ),
-        Container(
-          width: 25,
-          height: 25,
-          decoration: ShapeDecoration(
-            color: const Color(0xFF247CFF),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6),
-            ),
-          ),
-          child: Center(
-            child: Text(
-              notReaded,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 10,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w400,
+        isMessage
+            ? Container(
+                width: 25,
+                height: 25,
+                decoration: ShapeDecoration(
+                  color: const Color(0xFF247CFF),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    notReaded,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              )
+            : CircleAvatar(
+                backgroundColor: isNotifi ? Colors.red : Colors.white,
+                radius: 5,
               ),
-            ),
-          ),
-        ),
       ],
     ),
   );

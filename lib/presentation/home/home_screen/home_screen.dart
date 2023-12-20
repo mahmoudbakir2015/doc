@@ -1,9 +1,10 @@
 import 'package:doc/constant/assets.dart';
-import 'package:doc/presentation/home/items.dart';
+import 'package:doc/presentation/home/home_screen/items.dart';
 import 'package:flutter/material.dart';
-import '../../constant/style.dart';
-import '../../widgets/custom_text_tile.dart';
-import '../../widgets/doc_info.dart';
+import '../../../constant/style.dart';
+import '../../../widgets/custom_text_tile.dart';
+import '../../../widgets/doc_info.dart';
+import '../notifications/notifications.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -19,7 +20,15 @@ class Home extends StatelessWidget {
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          buildNotification(),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const NotifiactionPage(),
+                  ),
+                );
+              },
+              child: buildNotification()),
           const SizedBox(
             height: 30,
           ),

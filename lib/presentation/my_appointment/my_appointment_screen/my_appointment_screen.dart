@@ -1,19 +1,19 @@
 import 'package:doc/constant/assets.dart';
 import 'package:doc/constant/style.dart';
-import 'package:doc/presentation/my_appointment/calender/items.dart';
+import 'package:doc/presentation/my_appointment/my_appointment_screen/items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/custom_list_tile.dart';
 import '../reschedule/reschedule.dart';
 
-class CalenderView extends StatefulWidget {
-  const CalenderView({super.key});
+class AppointmentView extends StatefulWidget {
+  const AppointmentView({super.key});
 
   @override
-  State<CalenderView> createState() => _CalenderViewState();
+  State<AppointmentView> createState() => _AppointmentViewState();
 }
 
-class _CalenderViewState extends State<CalenderView>
+class _AppointmentViewState extends State<AppointmentView>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
   @override

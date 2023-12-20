@@ -1,6 +1,6 @@
 import 'package:doc/constant/assets.dart';
 import 'package:doc/constant/style.dart';
-import 'package:doc/presentation/home/home.dart';
+import 'package:doc/presentation/home/home_screen/home_screen.dart';
 import 'package:doc/widgets/light_text.dart';
 import 'package:doc/widgets/sub_text.dart';
 import 'package:flutter/material.dart';
