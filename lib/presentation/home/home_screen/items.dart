@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../constant/assets.dart';
 import '../../../constant/style.dart';
 
@@ -118,37 +116,6 @@ Container buildFindNearby() {
                 ),
               ),
             ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-SizedBox buildSpeciality({required String type, required String icon}) {
-  return SizedBox(
-    height: 150,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        CircleAvatar(
-          radius: 35,
-          backgroundColor: const Color(0xFFF4F8FF),
-          child: Center(
-            child: SvgPicture.asset(
-              icon,
-            ),
-          ),
-        ),
-        Text(
-          type,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Color(0xFF242424),
-            fontSize: 12,
-            fontFamily: 'Inter',
-            fontWeight: FontWeight.w400,
-            height: 0.12,
           ),
         ),
       ],

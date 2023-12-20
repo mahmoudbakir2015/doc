@@ -1,9 +1,12 @@
 import 'package:doc/constant/assets.dart';
 import 'package:doc/presentation/home/home_screen/items.dart';
 import 'package:flutter/material.dart';
+import '../../../constant/constants.dart';
 import '../../../constant/style.dart';
+import '../../../widgets/custom_speciality.dart';
 import '../../../widgets/custom_text_tile.dart';
 import '../../../widgets/doc_info.dart';
+import '../doctor_speciality/doctor_speciality.dart';
 import '../notifications/notifications.dart';
 
 class Home extends StatelessWidget {
@@ -21,14 +24,15 @@ class Home extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         children: [
           GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const NotifiactionPage(),
-                  ),
-                );
-              },
-              child: buildNotification()),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const NotifiactionPage(),
+                ),
+              );
+            },
+            child: buildNotification(),
+          ),
           const SizedBox(
             height: 30,
           ),
@@ -37,22 +41,33 @@ class Home extends StatelessWidget {
             height: 30,
           ),
           buildTextTile(
-              mainText: 'Doctor Speciality', onTap: () {}, subText: 'see All'),
+              mainText: 'Doctor Speciality',
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const DoctorSpeciality(),
+                  ),
+                );
+              },
+              subText: 'see All'),
           SizedBox(
-            height: 100,
+            height: 120,
             child: ListView.separated(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
               itemBuilder: (ctx, index) {
-                return buildSpeciality(type: 'General', icon: Assets.apple);
+                return buildSpeciality(
+                  icon: Constants.doctorSpeciality[index]['icon'],
+                  text: Constants.doctorSpeciality[index]['type'],
+                );
               },
               separatorBuilder: (ctx, index) {
                 return const SizedBox(
                   width: 25,
                 );
               },
-              itemCount: 5,
+              itemCount: 4,
             ),
           ),
           const SizedBox(

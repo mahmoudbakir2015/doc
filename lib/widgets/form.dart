@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:doc/constant/constants.dart';
 import 'package:doc/widgets/custom_phone_form.dart';
 import 'package:flutter/material.dart';
 import 'package:doc/widgets/custom_text_form.dart';
@@ -73,7 +74,7 @@ class _FormSheetState extends State<FormSheet> {
           !widget.isLogined
               ? PhoneForm(
                   selectedFlag: Assets.selectedFlag,
-                  flags: Assets.flags,
+                  flags: Constants.flags,
                   phone: widget.phone!,
                 )
               : const SizedBox(

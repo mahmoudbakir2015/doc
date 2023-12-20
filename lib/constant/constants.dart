@@ -1,6 +1,62 @@
 import 'package:doc/constant/assets.dart';
 
 abstract class Constants {
+  static const List<String> flags = [
+    'assets/images/england.svg',
+    'assets/images/america.svg',
+    'assets/images/egypt.svg',
+    'assets/images/palestine.svg'
+  ];
+  static List<Map> doctorSpeciality = [
+    {
+      'icon': Assets.general,
+      'type': 'General',
+    },
+    {
+      'icon': Assets.ent,
+      'type': 'Ent',
+    },
+    {
+      'icon': Assets.pediatric,
+      'type': 'Pediatric',
+    },
+    {
+      'icon': Assets.urologist,
+      'type': 'Urologist',
+    },
+    {
+      'icon': Assets.dentistry,
+      'type': 'Dentistry',
+    },
+    {
+      'icon': Assets.intestine,
+      'type': 'Intestine',
+    },
+    {
+      'icon': Assets.histologist,
+      'type': 'Histologist',
+    },
+    {
+      'icon': Assets.hepatology,
+      'type': 'Hepatology',
+    },
+    {
+      'icon': Assets.cardiologist,
+      'type': 'cardiologist',
+    },
+    {
+      'icon': Assets.neurologic,
+      'type': 'Neurologic',
+    },
+    {
+      'icon': Assets.pulmonary,
+      'type': 'Pulmonary',
+    },
+    {
+      'icon': Assets.optometry,
+      'type': 'Optometry',
+    },
+  ];
   static List<String> listOfMonths = [
     "Jan",
     "Feb",

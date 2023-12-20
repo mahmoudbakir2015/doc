@@ -1,3 +1,4 @@
+import 'package:doc/constant/constants.dart';
 import 'package:doc/constant/style.dart';
 import 'package:doc/presentation/auth/otp/otp.dart';
 import 'package:doc/widgets/light_text.dart';
@@ -34,7 +35,7 @@ class Forget extends StatelessWidget {
             ),
             PhoneForm(
               selectedFlag: Assets.selectedFlag,
-              flags: Assets.flags,
+              flags: Constants.flags,
               phone: phone,
             ),
             const Spacer(),

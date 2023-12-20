@@ -1,6 +1,5 @@
 import 'package:doc/constant/style.dart';
 import 'package:flutter/material.dart';
-
 import '../../../constant/assets.dart';
 import '../../../widgets/custom_list_tile.dart';
 import '../../chat/message_page/items.dart';
