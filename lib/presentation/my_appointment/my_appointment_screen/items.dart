@@ -17,68 +17,12 @@ Padding buildDocUpComing({
     padding: const EdgeInsets.only(bottom: 30.0),
     child: Column(
       children: [
-        ListTile(
-          leading: Container(
-            width: 100,
-            decoration: BoxDecoration(
-                color: Colors.grey, borderRadius: BorderRadius.circular(6)),
-            child: Image(
-              fit: BoxFit.contain,
-              image: NetworkImage(
-                image ?? Assets.docImage,
-              ),
-              width: 100 / 3,
-            ),
-          ),
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                name,
-                style: const TextStyle(
-                  color: Color(0xFF242424),
-                  fontSize: 14,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Text(
-                  subDetails,
-                  style: const TextStyle(
-                    color: Color(0xFF616161),
-                    fontSize: 10,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
-              Text(
-                date,
-                style: const TextStyle(
-                  color: Color(0xFF757575),
-                  fontSize: 12,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w400,
-                ),
-                maxLines: 3,
-              ),
-            ],
-          ),
-          trailing: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: chatTap,
-                child: SvgPicture.asset(
-                  Assets.chat,
-                  color: Colors.blue,
-                ),
-              ),
-            ],
-          ),
+        buildChatCardDoc(
+          name: name,
+          subDetails: subDetails,
+          date: date,
+          chat: chatTap,
+          image: image,
         ),
         Row(
           children: [
@@ -95,6 +39,78 @@ Padding buildDocUpComing({
               onPressed: onRechedule,
             )),
           ],
+        ),
+      ],
+    ),
+  );
+}
+
+ListTile buildChatCardDoc({
+  required String name,
+  required String subDetails,
+  required String date,
+  required void Function()? chat,
+  String? image,
+}) {
+  return ListTile(
+    leading: Container(
+      width: 100,
+      decoration: BoxDecoration(
+          color: Colors.grey, borderRadius: BorderRadius.circular(6)),
+      child: Image(
+        fit: BoxFit.contain,
+        image: NetworkImage(
+          image ?? Assets.docImage,
+        ),
+        width: 100 / 3,
+      ),
+    ),
+    title: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          name,
+          style: const TextStyle(
+            color: Color(0xFF242424),
+            fontSize: 14,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: Text(
+            subDetails,
+            style: const TextStyle(
+              color: Color(0xFF616161),
+              fontSize: 10,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+        Text(
+          date,
+          style: const TextStyle(
+            color: Color(0xFF757575),
+            fontSize: 12,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w400,
+          ),
+          maxLines: 3,
+        ),
+      ],
+    ),
+    trailing: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        GestureDetector(
+          onTap: chat,
+          child: SvgPicture.asset(
+            Assets.chat,
+            color: Colors.blue,
+          ),
         ),
       ],
     ),

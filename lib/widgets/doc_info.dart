@@ -4,7 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../constant/assets.dart';
 
 Row buildDocInfo({
-  required String docPhoto,
+  bool isChat = false,
+  void Function()? chatTap,
+  String? docPhoto,
   required String name,
   required String description,
   required String type,
@@ -22,7 +24,7 @@ Row buildDocInfo({
             color: Colors.grey,
             image: DecorationImage(
               alignment: Alignment.center,
-              image: NetworkImage(docPhoto),
+              image: NetworkImage(docPhoto ?? Assets.docImage),
               fit: BoxFit.contain,
             ),
             shape: RoundedRectangleBorder(
@@ -106,6 +108,20 @@ Row buildDocInfo({
           ),
         ),
       ),
+      isChat
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                    onTap: chatTap,
+                    child: SvgPicture.asset(
+                      Assets.chat,
+                      color: Colors.blue,
+                    ))
+              ],
+            )
+          : const Text('')
     ],
   );
 }

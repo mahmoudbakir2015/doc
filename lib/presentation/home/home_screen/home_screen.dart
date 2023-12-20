@@ -6,8 +6,10 @@ import '../../../constant/style.dart';
 import '../../../widgets/custom_speciality.dart';
 import '../../../widgets/custom_text_tile.dart';
 import '../../../widgets/doc_info.dart';
+import '../doctor_page/doctor_page.dart';
 import '../doctor_speciality/doctor_speciality.dart';
 import '../notifications/notifications.dart';
+import '../recommendation_doctor/recommendation_doctor.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -75,15 +77,27 @@ class Home extends StatelessWidget {
           ),
           buildTextTile(
               mainText: 'Recommendation Doctor',
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const RecommendationDoctor(),
+                  ),
+                );
+              },
               subText: 'see All'),
           Expanded(
             child: ListView.separated(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (ctx, index) {
-                return GestureDetector(
-                  onTap: () {},
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const DoctorPage(),
+                      ),
+                    );
+                  },
                   child: buildDocInfo(
                     docPhoto: Assets.docImage,
                     name: 'Dr. Randy Wigham',

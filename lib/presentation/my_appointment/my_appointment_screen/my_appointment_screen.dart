@@ -4,6 +4,7 @@ import 'package:doc/presentation/my_appointment/my_appointment_screen/items.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/custom_list_tile.dart';
+import '../../../widgets/doc_info.dart';
 import '../reschedule/reschedule.dart';
 
 class AppointmentView extends StatefulWidget {

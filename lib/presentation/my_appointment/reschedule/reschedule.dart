@@ -2,11 +2,12 @@ import 'package:doc/constant/style.dart';
 import 'package:doc/presentation/my_appointment/reschedule/items.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/constants.dart';
+import '../../../widgets/custom_bold_text.dart';
+import '../../../widgets/custom_choose.dart';
 import '../../../widgets/custom_list_tile.dart';
 import '../../../widgets/custom_text_tile.dart';
 import '../../../widgets/default_button.dart';
 import '../details/details.dart';
-import '../items.dart';
 
 class Reschedule extends StatefulWidget {
   const Reschedule({super.key});
@@ -103,7 +104,7 @@ class _RescheduleState extends State<Reschedule> {
                     setState(() {});
                     chooseTime = index;
                   },
-                  child: buildAvailbleTime(
+                  child: buildChoose(
                     index: index,
                     choose: chooseTime,
                     text: availableTime[index],

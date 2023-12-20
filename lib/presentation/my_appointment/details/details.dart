@@ -3,11 +3,11 @@ import 'package:doc/presentation/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constant/assets.dart';
+import '../../../widgets/custom_bold_text.dart';
 import '../../../widgets/custom_list_tile.dart';
 import '../../../widgets/custom_space.dart';
 import '../../../widgets/default_button.dart';
 import '../../../widgets/doc_info.dart';
-import '../items.dart';
 
 class RescheduleDetails extends StatelessWidget {
   final Map bookDetails;

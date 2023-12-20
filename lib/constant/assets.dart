@@ -6,7 +6,6 @@ abstract class Assets {
   static const String faceId = 'assets/images/face_scanner.svg';
   static const String selectedFlag = 'assets/images/palestine.svg';
   static const String girl = 'assets/images/girl.svg';
-
   static const String star = 'assets/images/star.svg';
   static const String home = 'assets/images/home.svg';
   static const String calender = 'assets/images/calendar.svg';
@@ -36,6 +35,8 @@ abstract class Assets {
   static const String optometry = 'assets/images/optometry.svg';
   static const String pulmonary = 'assets/images/pulmonary.svg';
   static const String urologist = 'assets/images/urologist.svg';
+  static const String map = 'assets/images/map.svg';
+  static const String mapPic = 'assets/images/map.png';
 
   static const String docImage =
       'https://purepng.com/public/uploads/large/purepng.com-doctorsdoctorsdoctors-and-nursesa-qualified-practitioner-of-medicine-aclinicianmedical-practitionermale-doctor-1421526856786dbhlu.png';
