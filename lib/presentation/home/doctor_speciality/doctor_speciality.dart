@@ -1,5 +1,4 @@
 import 'package:doc/constant/style.dart';
-import 'package:doc/presentation/home/doctor_speciality/items.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/constants.dart';
 import '../../../widgets/custom_list_tile.dart';

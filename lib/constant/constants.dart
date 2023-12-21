@@ -57,6 +57,14 @@ abstract class Constants {
       'type': 'Optometry',
     },
   ];
+  static List availableTime = [
+    '08:00',
+    '08:30',
+    '09:00',
+    '09:30',
+    '10:00',
+    '10:30',
+  ];
   static List<String> listOfMonths = [
     "Jan",
     "Feb",

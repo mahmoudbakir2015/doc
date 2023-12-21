@@ -24,14 +24,6 @@ class _RescheduleState extends State<Reschedule> {
   ScrollController scrollController = ScrollController();
   DateTime selectedDate = DateTime.now();
 
-  List availableTime = [
-    '08:00',
-    '08:30',
-    '09:00',
-    '09:30',
-    '10:00',
-    '10:30',
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,10 +99,10 @@ class _RescheduleState extends State<Reschedule> {
                   child: buildChoose(
                     index: index,
                     choose: chooseTime,
-                    text: availableTime[index],
+                    text: Constants.availableTime[index],
                   ),
                 ),
-                itemCount: availableTime.length,
+                itemCount: Constants.availableTime.length,
               ),
             ),
             Padding(
@@ -147,7 +139,7 @@ class _RescheduleState extends State<Reschedule> {
                       bookDetails: {
                         'date':
                             '${selectedDate.weekday},${selectedDate.day} ${selectedDate.month} ${selectedDate.year}',
-                        'available Time': availableTime[chooseTime],
+                        'available Time': Constants.availableTime[chooseTime],
                         'Appointment Type': Constants
                             .appointmentType[activeAppointment]['text'],
                       },
@@ -157,7 +149,7 @@ class _RescheduleState extends State<Reschedule> {
                 print(
                   {
                     'date': selectedDate,
-                    'available Time': availableTime[chooseTime],
+                    'available Time': Constants.availableTime[chooseTime],
                     'Appointment Type':
                         Constants.appointmentType[activeAppointment]['text'],
                   },

@@ -54,29 +54,26 @@ Padding buildLightText({required String text}) {
   );
 }
 
-Padding buildLocation(
+Column buildLocation(
     {required String practicePlace, void Function()? location}) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        buildBoldText(text: 'Practice Place'),
-        buildLightText(text: practicePlace),
-        buildBoldText(text: 'Location Map'),
-        Expanded(
-          child: GestureDetector(
-            onTap: location,
-            child: const Image(
-              fit: BoxFit.fitWidth,
-              image: AssetImage(
-                Assets.mapPic,
-              ),
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      buildBoldText(text: 'Practice Place'),
+      buildLightText(text: practicePlace),
+      buildBoldText(text: 'Location Map'),
+      Expanded(
+        child: GestureDetector(
+          onTap: location,
+          child: const Image(
+            fit: BoxFit.fitWidth,
+            image: AssetImage(
+              Assets.mapPic,
             ),
           ),
         ),
-      ],
-    ),
+      ),
+    ],
   );
 }
 

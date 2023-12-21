@@ -5,6 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constant/style.dart';
 import '../../../widgets/custom_list_tile.dart';
 import '../../../widgets/custom_search_filter.dart';
+import '../chat_page/chat_page.dart';
+import '../items.dart';
 
 // ignore: must_be_immutable
 class MessagesView extends StatelessWidget {
@@ -13,6 +15,7 @@ class MessagesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController search = TextEditingController();
     return Padding(
       padding: const EdgeInsets.only(
         left: Styles.appPadding,
@@ -24,7 +27,9 @@ class MessagesView extends StatelessWidget {
           CustomListTile(
             text: 'Message',
             trailing: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                buildCreateMessage(context, search);
+              },
               child: SvgPicture.asset(
                 Assets.messageAdd,
               ),
@@ -44,14 +49,23 @@ class MessagesView extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (ctx, index) {
-                return buildNotificationCard(
-                  image: Assets.docImage,
-                  name: 'Dr. Randy Wigham',
-                  subDetails: 'General Doctor | RSUD Gatot Subroto',
-                  message:
-                      '''Fine, I'll do a check. Does the patient have a history of certain diseases?''',
-                  date: '7:11 PM',
-                  notReaded: '2',
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ChatPage(),
+                      ),
+                    );
+                  },
+                  child: buildNotificationCard(
+                    image: Assets.docImage,
+                    name: 'Dr. Randy Wigham',
+                    subDetails: 'General Doctor | RSUD Gatot Subroto',
+                    message:
+                        '''Fine, I'll do a check. Does the patient have a history of certain diseases?''',
+                    date: '7:11 PM',
+                    notReaded: '2',
+                  ),
                 );
               },
               separatorBuilder: (ctx, index) {
