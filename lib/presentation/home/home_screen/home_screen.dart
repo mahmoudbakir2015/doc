@@ -1,4 +1,5 @@
 import 'package:doc/constant/assets.dart';
+import 'package:doc/presentation/home/find_nearby/find_nearby.dart';
 import 'package:doc/presentation/home/home_screen/items.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/constants.dart';
@@ -38,7 +39,15 @@ class Home extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          buildFindNearby(),
+          buildFindNearby(
+            findNearby: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const FindNeaby(),
+                ),
+              );
+            },
+          ),
           const SizedBox(
             height: 30,
           ),

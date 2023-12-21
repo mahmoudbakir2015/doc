@@ -36,6 +36,7 @@ abstract class Assets {
   static const String pulmonary = 'assets/images/pulmonary.svg';
   static const String urologist = 'assets/images/urologist.svg';
   static const String map = 'assets/images/map.svg';
+  static const String settingMap = 'assets/images/setting_2.svg';
   static const String mapPic = 'assets/images/map.png';
 
   static const String docImage =

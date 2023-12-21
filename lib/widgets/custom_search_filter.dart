@@ -1,19 +1,23 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:doc/constant/style.dart';
 import 'package:doc/widgets/custom_bold_text.dart';
 import 'package:doc/widgets/custom_choose.dart';
 import 'package:doc/widgets/custom_space.dart';
-import 'package:doc/widgets/custom_text_form.dart';
 import 'package:doc/widgets/default_button.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constant/assets.dart';
 
+// ignore: must_be_immutable
 class CustomSearchFilter extends StatefulWidget {
-  const CustomSearchFilter({
-    super.key,
+  bool isMap;
+  CustomSearchFilter({
+    Key? key,
+    this.isMap = false,
     required this.controller,
-  });
+  }) : super(key: key);
 
   final TextEditingController controller;
 
@@ -24,21 +28,33 @@ class CustomSearchFilter extends StatefulWidget {
 class _CustomSearchFilterState extends State<CustomSearchFilter> {
   int specialityChoose = 0;
   int rating = 0;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
           flex: 14,
-          child: defaultTextForm(
-              widget: SvgPicture.asset(
-                fit: BoxFit.scaleDown,
+          child: TextFormField(
+            controller: widget.controller,
+            decoration: InputDecoration(
+              hintText: 'Search',
+              prefixIcon: SvgPicture.asset(
+                color: Colors.grey,
                 Assets.search,
+                fit: BoxFit.scaleDown,
               ),
-              label: 'Search',
-              controller: widget.controller,
-              onValidate: (String? value) {},
-              textInputType: TextInputType.text),
+              fillColor: widget.isMap ? Colors.white : const Color(0xFFF2F4F7),
+              filled: true,
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(
+                    Styles.appPadding,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ),
         const Spacer(),
         GestureDetector(
@@ -124,15 +140,26 @@ class _CustomSearchFilterState extends State<CustomSearchFilter> {
                         ),
                       ),
                       buildCustomSpace(context),
-                      DefaultButton(onPressed: () {}, text: 'Done'),
+                      DefaultButton(
+                        onPressed: () {},
+                        text: 'Done',
+                      ),
                     ],
                   ),
                 );
               },
             );
           },
-          child: const Icon(
-            Icons.filter_list,
+          child: Container(
+            width: 60,
+            height: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(Styles.appPadding),
+              color: Colors.white,
+            ),
+            child: const Icon(
+              Icons.filter_list,
+            ),
           ),
         ),
       ],

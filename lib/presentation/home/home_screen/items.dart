@@ -54,7 +54,9 @@ Row buildNotification() {
   );
 }
 
-Container buildFindNearby() {
+Container buildFindNearby({
+  void Function()? findNearby,
+}) {
   return Container(
     width: double.infinity,
     height: 167,
@@ -91,7 +93,7 @@ Container buildFindNearby() {
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: findNearby,
                 child: const Text(
                   'Find Nearby',
                   style: TextStyle(

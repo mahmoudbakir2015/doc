@@ -12,7 +12,7 @@ Column buildSpeciality({required String icon, required String text}) {
         ),
       ),
       const SizedBox(
-        height: 10,
+        height: 5,
       ),
       Text(
         text,
