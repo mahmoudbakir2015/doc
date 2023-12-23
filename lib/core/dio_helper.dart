@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:ui/constant/constant.dart';
 
 class DioHelper {
   static Dio? dio;
@@ -11,7 +10,7 @@ class DioHelper {
   static init({bool isBaseUrl = true}) {
     dio = Dio(
       BaseOptions(
-          baseUrl: Constant.baseUrl,
+          baseUrl: ' Constant.baseUrl',
           receiveDataWhenStatusError: true,
           connectTimeout: const Duration(seconds: 10),
           receiveTimeout: const Duration(seconds: 10),

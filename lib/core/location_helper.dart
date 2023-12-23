@@ -1,6 +1,4 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:ui/business_logic/cubit/Map_cubit/Map_cubit.dart';
 
 class LocationHelper {
   static Future<Position> getMyPosition() async {
