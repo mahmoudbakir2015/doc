@@ -163,7 +163,37 @@ class _SendMessageState extends State<SendMessage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          showBottomSheet(
+                            context: (context),
+                            builder: (context) => SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.3,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  buildAttachment(
+                                    onTap: () {},
+                                    icon: Assets.camera,
+                                    name: 'Camera',
+                                    color: Colors.blue,
+                                  ),
+                                  buildAttachment(
+                                    onTap: () {},
+                                    icon: Assets.clipboard,
+                                    name: 'Document',
+                                  ),
+                                  buildAttachment(
+                                    onTap: () {},
+                                    icon: Assets.attachment,
+                                    name: 'Attach File',
+                                    color: Colors.red,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                         child: SvgPicture.asset(
                           Assets.attachment,
                           fit: BoxFit.scaleDown,
@@ -220,6 +250,34 @@ class _SendMessageState extends State<SendMessage> {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  InkWell buildAttachment({
+    required String icon,
+    required String name,
+    void Function()? onTap,
+    Color? color,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CircleAvatar(
+            radius: 35,
+            child: SvgPicture.asset(
+              icon,
+              color: color,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          buildBoldText(text: name),
         ],
       ),
     );
