@@ -5,6 +5,7 @@ import 'package:doc/widgets/custom_list_tile.dart';
 import 'package:doc/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 import '../../../widgets/doc_info.dart';
+import '../../chat/chat_page/chat_page.dart';
 
 class DoctorPage extends StatefulWidget {
   const DoctorPage({super.key});
@@ -47,6 +48,13 @@ class _DoctorPageState extends State<DoctorPage>
                 vertical: 10.0,
               ),
               child: buildDocInfo(
+                chatTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ChatPage(),
+                    ),
+                  );
+                },
                 isChat: true,
                 name: 'Dr Randy Wigham',
                 description: 'RSUD Gatot Subroto',

@@ -1,4 +1,5 @@
 import 'package:doc/constant/style.dart';
+import 'package:doc/presentation/home/doctor_page/doctor_page.dart';
 import 'package:doc/widgets/custom_list_tile.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/assets.dart';
@@ -42,13 +43,22 @@ class _RecommendationDoctorState extends State<RecommendationDoctor> {
               child: ListView.separated(
                 shrinkWrap: true,
                 itemBuilder: (ctx, index) {
-                  return buildDocInfo(
-                    docPhoto: Assets.docImage,
-                    name: 'Dr. Randy Wigham',
-                    type: 'General',
-                    description: 'RSUD Gatot Subroto',
-                    rate: '4.8',
-                    numReviews: '4,279',
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const DoctorPage(),
+                        ),
+                      );
+                    },
+                    child: buildDocInfo(
+                      docPhoto: Assets.docImage,
+                      name: 'Dr. Randy Wigham',
+                      type: 'General',
+                      description: 'RSUD Gatot Subroto',
+                      rate: '4.8',
+                      numReviews: '4,279',
+                    ),
                   );
                 },
                 separatorBuilder: (ctx, index) {

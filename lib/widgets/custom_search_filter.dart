@@ -31,138 +31,145 @@ class _CustomSearchFilterState extends State<CustomSearchFilter> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 14,
-          child: TextFormField(
-            controller: widget.controller,
-            decoration: InputDecoration(
-              hintText: 'Search',
-              prefixIcon: SvgPicture.asset(
-                color: Colors.grey,
-                Assets.search,
-                fit: BoxFit.scaleDown,
-              ),
-              fillColor: widget.isMap ? Colors.white : const Color(0xFFF2F4F7),
-              filled: true,
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(
-                    Styles.appPadding,
+    return SizedBox(
+      height: 50,
+      child: Row(
+        children: [
+          Expanded(
+            flex: 14,
+            child: TextFormField(
+              controller: widget.controller,
+              decoration: InputDecoration(
+                hintText: 'Search',
+                prefixIcon: SvgPicture.asset(
+                  color: Colors.grey,
+                  Assets.search,
+                  fit: BoxFit.scaleDown,
+                ),
+                fillColor:
+                    widget.isMap ? Colors.white : const Color(0xFFF2F4F7),
+                filled: true,
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      Styles.appPadding,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-        const Spacer(),
-        GestureDetector(
-          onTap: () {
-            showModalBottomSheet(
-              context: context,
-              builder: (BuildContext context) {
-                return Padding(
-                  padding: const EdgeInsets.all(Styles.appPadding),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Center(child: buildBoldText(text: 'Sort By')),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: buildBoldText(text: 'Speciality'),
-                      ),
-                      SizedBox(
-                        height: 60,
-                        child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (ctx, index) {
-                            return GestureDetector(
-                                onTap: () {
-                                  setState(() {});
-                                  specialityChoose = index;
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: SizedBox(
-                                    width: 60,
-                                    child: buildChoose(
-                                      index: index,
-                                      text: 'All',
-                                      choose: specialityChoose,
-                                    ),
-                                  ),
-                                ));
-                          },
-                          separatorBuilder: (ctx, index) {
-                            return const SizedBox(
-                              width: 20,
-                            );
-                          },
-                          itemCount: 10,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: buildBoldText(text: 'Rating'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: SizedBox(
-                          height: 60,
-                          child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (ctx, index) {
-                              return GestureDetector(
-                                  onTap: () {
-                                    setState(() {});
-                                    rating = index;
-                                  },
-                                  child: SizedBox(
-                                    width: 60,
-                                    child: buildChoose(
-                                      index: index,
-                                      text: 'All',
-                                      choose: rating,
-                                      isRating: true,
-                                    ),
-                                  ));
-                            },
-                            separatorBuilder: (ctx, index) {
-                              return const SizedBox(
-                                width: 20,
-                              );
-                            },
-                            itemCount: 10,
+          const Spacer(),
+          GestureDetector(
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return Scaffold(
+                    body: Padding(
+                      padding: const EdgeInsets.all(Styles.appPadding),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Center(child: buildBoldText(text: 'Sort By')),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: buildBoldText(text: 'Speciality'),
                           ),
-                        ),
+                          SizedBox(
+                            height: 60,
+                            child: ListView.separated(
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (ctx, index) {
+                                return GestureDetector(
+                                    onTap: () {
+                                      specialityChoose = index;
+                                      setState(() {});
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10),
+                                      child: SizedBox(
+                                        width: 60,
+                                        child: buildChoose(
+                                          index: index,
+                                          text: 'All',
+                                          choose: specialityChoose,
+                                        ),
+                                      ),
+                                    ));
+                              },
+                              separatorBuilder: (ctx, index) {
+                                return const SizedBox(
+                                  width: 20,
+                                );
+                              },
+                              itemCount: 10,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: buildBoldText(text: 'Rating'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: SizedBox(
+                              height: 60,
+                              child: ListView.separated(
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (ctx, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      setState(() {});
+                                      rating = index;
+                                    },
+                                    child: SizedBox(
+                                      width: 60,
+                                      child: buildChoose(
+                                        index: index,
+                                        text: 'All',
+                                        choose: rating,
+                                        isRating: true,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                separatorBuilder: (ctx, index) {
+                                  return const SizedBox(
+                                    width: 20,
+                                  );
+                                },
+                                itemCount: 10,
+                              ),
+                            ),
+                          ),
+                          buildCustomSpace(context),
+                          DefaultButton(
+                            onPressed: () {},
+                            text: 'Done',
+                          ),
+                        ],
                       ),
-                      buildCustomSpace(context),
-                      DefaultButton(
-                        onPressed: () {},
-                        text: 'Done',
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
-          },
-          child: Container(
-            width: 60,
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Styles.appPadding),
-              color: Colors.white,
-            ),
-            child: const Icon(
-              Icons.filter_list,
+                    ),
+                  );
+                },
+              );
+            },
+            child: Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+              ),
+              child: const Icon(
+                Icons.filter_list,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

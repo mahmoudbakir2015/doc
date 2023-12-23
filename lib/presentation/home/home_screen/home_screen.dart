@@ -26,7 +26,8 @@ class Home extends StatelessWidget {
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          GestureDetector(
+          buildNotification(
+            name: 'Mahmoud',
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -34,7 +35,6 @@ class Home extends StatelessWidget {
                 ),
               );
             },
-            child: buildNotification(),
           ),
           const SizedBox(
             height: 30,

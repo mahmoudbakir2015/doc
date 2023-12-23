@@ -1,4 +1,5 @@
 import 'package:doc/constant/assets.dart';
+import 'package:doc/presentation/chat/create_message/create_message.dart';
 import 'package:doc/presentation/chat/message_page/items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,7 +29,12 @@ class MessagesView extends StatelessWidget {
             text: 'Message',
             trailing: GestureDetector(
               onTap: () {
-                buildCreateMessage(context, search);
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const CreateMessage(),
+                  ),
+                );
+                // buildCreateMessage(context, search);
               },
               child: SvgPicture.asset(
                 Assets.messageAdd,

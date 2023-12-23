@@ -14,11 +14,9 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController sendMessage = TextEditingController();
-    bool tapped = false;
     return Scaffold(
       appBar: buildAppBar(
-        videoCall: () {},
+        actionTap: () {},
         context: context,
       ),
       body: Column(
@@ -47,10 +45,7 @@ class _ChatPageState extends State<ChatPage> {
               ),
             ),
           ),
-          SendMessage(
-            sendMessage: sendMessage,
-            tapped: tapped,
-          ),
+          const SendMessage(),
         ],
       ),
     );

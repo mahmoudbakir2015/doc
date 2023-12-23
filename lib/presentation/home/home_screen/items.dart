@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import '../../../constant/assets.dart';
 import '../../../constant/style.dart';
 
-Row buildNotification() {
-  return const Row(
+Row buildNotification({required String name, void Function()? onTap}) {
+  return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Hi, Mahmoud!',
-            style: TextStyle(
+            'Hi, $name!',
+            style: const TextStyle(
               color: Color(0xFF242424),
               fontSize: 18,
               fontFamily: 'Inter',
               fontWeight: FontWeight.w700,
             ),
           ),
-          Text(
+          const Text(
             'How Are you Today?',
             style: TextStyle(
               color: Color(0xFF616161),
@@ -29,24 +29,27 @@ Row buildNotification() {
           ),
         ],
       ),
-      CircleAvatar(
-        backgroundColor: Color(0xFFF5F5F5),
-        child: Center(
-          child: Stack(
-            children: [
-              Icon(
-                Icons.notifications_none,
-                color: Colors.black,
-                size: 25,
-              ),
-              Positioned(
-                right: 0,
-                child: CircleAvatar(
-                  radius: 5,
-                  backgroundColor: Colors.red,
+      GestureDetector(
+        onTap: onTap,
+        child: const CircleAvatar(
+          backgroundColor: Color(0xFFF5F5F5),
+          child: Center(
+            child: Stack(
+              children: [
+                Icon(
+                  Icons.notifications_none,
+                  color: Colors.black,
+                  size: 25,
                 ),
-              ),
-            ],
+                Positioned(
+                  right: 0,
+                  child: CircleAvatar(
+                    radius: 5,
+                    backgroundColor: Colors.red,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

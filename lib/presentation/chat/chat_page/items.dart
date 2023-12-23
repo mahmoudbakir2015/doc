@@ -8,7 +8,7 @@ import '../../../widgets/custom_bold_text.dart';
 import '../../home/doctor_page/items.dart';
 
 AppBar buildAppBar({
-  required Function() videoCall,
+  required Function() actionTap,
   required BuildContext context,
 }) {
   return AppBar(
@@ -27,7 +27,7 @@ AppBar buildAppBar({
     ),
     actions: [
       buildContainerIcon(
-        onTap: videoCall,
+        onTap: actionTap,
         context: context,
       ),
     ],
@@ -130,12 +130,8 @@ Column buildMessage({
 
 // ignore: must_be_immutable
 class SendMessage extends StatefulWidget {
-  final TextEditingController sendMessage;
-  bool tapped;
-  SendMessage({
+  const SendMessage({
     Key? key,
-    required this.sendMessage,
-    this.tapped = false,
   }) : super(key: key);
 
   @override
@@ -143,6 +139,8 @@ class SendMessage extends StatefulWidget {
 }
 
 class _SendMessageState extends State<SendMessage> {
+  TextEditingController sendMessage = TextEditingController();
+  bool isTapped = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -155,9 +153,8 @@ class _SendMessageState extends State<SendMessage> {
           Expanded(
             child: TextFormField(
               onTap: () {
-                widget.tapped = true;
-
                 setState(() {});
+                isTapped = true;
               },
               decoration: InputDecoration(
                 suffixIcon: SizedBox(
@@ -197,7 +194,7 @@ class _SendMessageState extends State<SendMessage> {
                   ),
                 ),
               ),
-              controller: widget.sendMessage,
+              controller: sendMessage,
             ),
           ),
           const SizedBox(
@@ -205,9 +202,9 @@ class _SendMessageState extends State<SendMessage> {
           ),
           GestureDetector(
             onTap: () {
-              if (widget.tapped) {
+              if (isTapped) {
                 print('sended');
-                widget.tapped = false;
+                isTapped = false;
 
                 setState(() {});
               } else {
@@ -218,7 +215,7 @@ class _SendMessageState extends State<SendMessage> {
               backgroundColor: Colors.blue,
               radius: 30,
               child: SvgPicture.asset(
-                widget.tapped ? Assets.send : Assets.mic,
+                isTapped ? Assets.send : Assets.mic,
                 color: Colors.white,
               ),
             ),
