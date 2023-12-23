@@ -1,5 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../constant/assets.dart';
 import '../../../constant/style.dart';
 import '../../../widgets/custom_bold_text.dart';
@@ -10,19 +12,10 @@ AppBar buildAppBar({
   required BuildContext context,
 }) {
   return AppBar(
-    leading: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.pop(context);
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Styles.borderRadius),
-          ),
-          child: const Icon(Icons.arrow_back_ios),
-        ),
-      ),
+    leadingWidth: 100,
+    leading: buildContainerIcon(
+      context: context,
+      isVideoCall: false,
     ),
     centerTitle: true,
     title: Column(
@@ -33,16 +26,47 @@ AppBar buildAppBar({
       ],
     ),
     actions: [
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
-        child: GestureDetector(
-          onTap: videoCall,
-          child: SvgPicture.asset(
-            Assets.videoCall,
-          ),
-        ),
+      buildContainerIcon(
+        onTap: videoCall,
+        context: context,
       ),
     ],
+  );
+}
+
+Padding buildContainerIcon(
+    {bool isVideoCall = true,
+    void Function()? onTap,
+    required BuildContext context}) {
+  return Padding(
+    padding: isVideoCall
+        ? const EdgeInsets.symmetric(horizontal: Styles.appPadding)
+        : const EdgeInsets.symmetric(
+            vertical: 10,
+            horizontal: Styles.appPadding,
+          ),
+    child: GestureDetector(
+      onTap: isVideoCall
+          ? onTap
+          : () {
+              Navigator.pop(context);
+            },
+      child: Container(
+        height: 40,
+        width: 40,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey, width: 2),
+          borderRadius: BorderRadius.circular(
+            10,
+          ),
+        ),
+        child: SvgPicture.asset(
+          isVideoCall ? Assets.videoCall : Assets.back,
+          color: Colors.black,
+          fit: BoxFit.scaleDown,
+        ),
+      ),
+    ),
   );
 }
 
@@ -104,72 +128,103 @@ Column buildMessage({
   );
 }
 
-Padding buildSendMessage(TextEditingController sendMessage) {
-  return Padding(
-    padding: const EdgeInsets.only(
-        left: Styles.appPadding,
-        bottom: Styles.appPadding,
-        right: Styles.appPadding),
-    child: Row(
-      children: [
-        Expanded(
-          child: TextFormField(
-            decoration: InputDecoration(
-              suffixIcon: SizedBox(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: SvgPicture.asset(
-                        Assets.attachment,
-                        fit: BoxFit.scaleDown,
+// ignore: must_be_immutable
+class SendMessage extends StatefulWidget {
+  final TextEditingController sendMessage;
+  bool tapped;
+  SendMessage({
+    Key? key,
+    required this.sendMessage,
+    this.tapped = false,
+  }) : super(key: key);
+
+  @override
+  State<SendMessage> createState() => _SendMessageState();
+}
+
+class _SendMessageState extends State<SendMessage> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+          left: Styles.appPadding,
+          bottom: Styles.appPadding,
+          right: Styles.appPadding),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextFormField(
+              onTap: () {
+                widget.tapped = true;
+
+                setState(() {});
+              },
+              decoration: InputDecoration(
+                suffixIcon: SizedBox(
+                  width: 60,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          Assets.attachment,
+                          fit: BoxFit.scaleDown,
+                        ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: SvgPicture.asset(
-                        Assets.camera,
-                        fit: BoxFit.scaleDown,
+                      GestureDetector(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          Assets.camera,
+                          fit: BoxFit.scaleDown,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                ),
+                prefixIcon: GestureDetector(
+                  onTap: () {},
+                  child: SvgPicture.asset(
+                    Assets.smile,
+                    color: Colors.grey,
+                    fit: BoxFit.scaleDown,
+                  ),
+                ),
+                hintText: 'Type a message ...',
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                  ),
                 ),
               ),
-              prefixIcon: GestureDetector(
-                onTap: () {},
-                child: SvgPicture.asset(
-                  Assets.smile,
-                  color: Colors.grey,
-                  fit: BoxFit.scaleDown,
-                ),
-              ),
-              hintText: 'Type a message ...',
-              border: const OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                ),
+              controller: widget.sendMessage,
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          GestureDetector(
+            onTap: () {
+              if (widget.tapped) {
+                print('sended');
+                widget.tapped = false;
+
+                setState(() {});
+              } else {
+                print('microPhone');
+              }
+            },
+            child: CircleAvatar(
+              backgroundColor: Colors.blue,
+              radius: 30,
+              child: SvgPicture.asset(
+                widget.tapped ? Assets.send : Assets.mic,
+                color: Colors.white,
               ),
             ),
-            controller: sendMessage,
           ),
-        ),
-        const SizedBox(
-          width: 20,
-        ),
-        GestureDetector(
-          onTap: () {},
-          child: CircleAvatar(
-            backgroundColor: Colors.blue,
-            radius: 30,
-            child: SvgPicture.asset(
-              Assets.mic,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }

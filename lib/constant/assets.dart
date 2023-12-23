@@ -43,7 +43,8 @@ abstract class Assets {
   static const String attachment = 'assets/images/attachmentsvg.svg';
   static const String settingMap = 'assets/images/setting_2.svg';
   static const String mapPic = 'assets/images/map.png';
-
+  static const String send = 'assets/images/send.svg';
+  static const String back = 'assets/images/back.svg';
   static const String docImage =
       'https://purepng.com/public/uploads/large/purepng.com-doctorsdoctorsdoctors-and-nursesa-qualified-practitioner-of-medicine-aclinicianmedical-practitionermale-doctor-1421526856786dbhlu.png';
 }

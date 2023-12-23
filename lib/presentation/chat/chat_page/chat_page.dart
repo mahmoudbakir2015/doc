@@ -4,12 +4,18 @@ import 'package:doc/presentation/chat/chat_page/items.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/data_message.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
 
   @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  @override
   Widget build(BuildContext context) {
     TextEditingController sendMessage = TextEditingController();
+    bool tapped = false;
     return Scaffold(
       appBar: buildAppBar(
         videoCall: () {},
@@ -41,7 +47,10 @@ class ChatPage extends StatelessWidget {
               ),
             ),
           ),
-          buildSendMessage(sendMessage),
+          SendMessage(
+            sendMessage: sendMessage,
+            tapped: tapped,
+          ),
         ],
       ),
     );
