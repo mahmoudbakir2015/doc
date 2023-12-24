@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../constant/assets.dart';
-import '../../../constant/style.dart';
-import '../../../widgets/custom_list_tile.dart';
+import '../../constant/assets.dart';
+import '../../constant/style.dart';
+import '../../widgets/custom_list_tile.dart';
 
 GestureDetector buildListTile(
     {required String text,
     required String icon,
-    required void Function() onTap}) {
+    required void Function()? onTap}) {
   return GestureDetector(
     onTap: onTap,
     child: Padding(
