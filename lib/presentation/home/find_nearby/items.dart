@@ -25,6 +25,7 @@ Positioned buildDocCard({
   required String type,
   required String rate,
   required String numReviews,
+  void Function()? onTap,
 }) {
   return Positioned(
     bottom: Styles.appPadding,
@@ -32,15 +33,18 @@ Positioned buildDocCard({
     right: Styles.appPadding,
     child: SizedBox(
       width: double.infinity,
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: buildDocInfo(
-            name: name,
-            description: description,
-            type: type,
-            rate: rate,
-            numReviews: numReviews,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: buildDocInfo(
+              name: name,
+              description: description,
+              type: type,
+              rate: rate,
+              numReviews: numReviews,
+            ),
           ),
         ),
       ),
