@@ -1,5 +1,7 @@
 import 'package:doc/presentation/profile/diagonestic/diagnostic.dart';
 import 'package:doc/presentation/profile/items.dart';
+import 'package:doc/presentation/profile/medical_records/medical_records.dart';
+import 'package:doc/presentation/profile/my_appointment/my_appointment.dart';
 import 'package:doc/presentation/profile/payment/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -58,7 +60,13 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         buildChooseButton(
                           text: 'My Appointment',
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const MyAppointment(),
+                              ),
+                            );
+                          },
                           context: context,
                         ),
                         const VerticalDivider(
@@ -68,7 +76,13 @@ class ProfilePage extends StatelessWidget {
                         buildChooseButton(
                           isAppointment: false,
                           text: 'Medical records',
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const MedicalRecord(),
+                              ),
+                            );
+                          },
                           context: context,
                         ),
                       ],

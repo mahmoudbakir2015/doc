@@ -15,7 +15,6 @@ class SubText extends StatelessWidget {
         fontFamily: 'Inter',
         overflow: TextOverflow.ellipsis,
         fontWeight: FontWeight.w400,
-        letterSpacing: 0.20,
       ),
     );
   }
