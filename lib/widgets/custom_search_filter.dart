@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:doc/constant/style.dart';
 import 'package:doc/widgets/custom_bold_text.dart';
-import 'package:doc/widgets/custom_choose.dart';
+import 'package:doc/widgets/custom_choose_container.dart';
 import 'package:doc/widgets/custom_space.dart';
 import 'package:doc/widgets/default_button.dart';
 

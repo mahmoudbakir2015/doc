@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constant/assets.dart';
 import '../../../constant/style.dart';
-import '../settings/settings.dart';
+import '../settings/setting_page/settings.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

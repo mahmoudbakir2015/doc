@@ -57,6 +57,17 @@ abstract class Constants {
       'type': 'Optometry',
     },
   ];
+  static List<String> languages = [
+    'Arab',
+    'English',
+    'France',
+    'Ghana',
+    'Indonesia',
+    'India',
+    'Italia',
+    'Japan',
+    'Russia',
+  ];
   static List availableTime = [
     '08:00',
     '08:30',
