@@ -2,7 +2,9 @@ import 'package:doc/constant/style.dart';
 import 'package:doc/widgets/custom_bold_text.dart';
 import 'package:doc/widgets/custom_list_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../constant/assets.dart';
 import 'items.dart';
 
 class MedicalRecord extends StatelessWidget {
@@ -28,7 +30,7 @@ class MedicalRecord extends StatelessWidget {
               child: CustomListTile(
                 trailing: GestureDetector(
                   onTap: () {},
-                  child: const Icon(Icons.list),
+                  child: SvgPicture.asset(Assets.dots),
                 ),
                 isMain: false,
                 text: 'Medical Record',

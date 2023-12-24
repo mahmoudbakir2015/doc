@@ -8,7 +8,7 @@ import '../../../widgets/custom_choose_tile.dart';
 import '../../../widgets/custom_list_tile.dart';
 import '../../../widgets/custom_text_tile.dart';
 import '../../../widgets/default_button.dart';
-import '../details/details.dart';
+import '../details_page/details.dart';
 
 class Reschedule extends StatefulWidget {
   const Reschedule({super.key});
@@ -122,6 +122,7 @@ class _RescheduleState extends State<Reschedule> {
                       activeAppointment = index;
                     },
                     child: CustomChooseTile(
+                      isLeading: true,
                       icon: Constants.appointmentType[index]['icon'].toString(),
                       text: Constants.appointmentType[index]['text'].toString(),
                       choose: index,

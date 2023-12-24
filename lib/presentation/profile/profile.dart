@@ -1,7 +1,7 @@
 import 'package:doc/presentation/profile/diagonestic/diagnostic.dart';
 import 'package:doc/presentation/profile/items.dart';
 import 'package:doc/presentation/profile/medical_records/medical_records.dart';
-import 'package:doc/presentation/profile/my_appointment/my_appointment.dart';
+import 'package:doc/presentation/profile/my_appointment_profile/my_appointment_profile.dart';
 import 'package:doc/presentation/profile/payment/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

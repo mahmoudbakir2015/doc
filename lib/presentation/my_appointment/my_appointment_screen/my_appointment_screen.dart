@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/custom_list_tile.dart';
 
+import '../../chat/chat_page/chat_page.dart';
 import '../reschedule/reschedule.dart';
 
 class AppointmentView extends StatefulWidget {
@@ -88,7 +89,13 @@ class _AppointmentViewState extends State<AppointmentView>
                           ),
                         );
                       },
-                      chatTap: () {},
+                      chatTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ChatPage(),
+                          ),
+                        );
+                      },
                     );
                   },
                   separatorBuilder: (ctx, index) {
