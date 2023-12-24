@@ -24,9 +24,13 @@ class PersonalInformation extends StatelessWidget {
     phone.text = '+201017632363';
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(Styles.appPadding),
+        padding: const EdgeInsets.only(
+          top: Styles.appPadding,
+          left: Styles.appPadding,
+          right: Styles.appPadding,
+        ),
         child: Form(
-          child: Column(
+          child: ListView(
             children: [
               CustomListTile(
                 isMain: false,
@@ -34,6 +38,7 @@ class PersonalInformation extends StatelessWidget {
               ),
               buildCustomSpace(context),
               buildEditPic(
+                context: context,
                 onTap: () {},
               ),
               const SizedBox(
@@ -63,13 +68,17 @@ class PersonalInformation extends StatelessWidget {
                   text:
                       '''When you set up your personal information settings, you should take care to provide accurate information.'''),
               const Spacer(),
-              DefaultButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    Navigator.pop(context);
-                  }
-                },
-                text: 'Save',
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: Styles.appPadding),
+                child: DefaultButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  text: 'Save',
+                ),
               ),
             ],
           ),

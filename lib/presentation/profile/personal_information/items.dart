@@ -24,24 +24,27 @@ Padding buildEditForm(
 
 GestureDetector buildEditPic({
   required void Function() onTap,
+  required BuildContext context,
 }) {
   return GestureDetector(
     onTap: onTap,
     child: Stack(
       children: [
-        const CircleAvatar(
-          radius: 70,
-          child: Image(
-            height: 100,
-            width: 100,
-            fit: BoxFit.scaleDown,
-            image: NetworkImage(
-              Assets.docImage,
+        const Center(
+          child: CircleAvatar(
+            radius: 70,
+            child: Image(
+              height: 100,
+              width: 100,
+              fit: BoxFit.scaleDown,
+              image: NetworkImage(
+                Assets.docImage,
+              ),
             ),
           ),
         ),
         Positioned(
-            right: 0,
+            right: MediaQuery.of(context).size.width * 0.29,
             bottom: 0,
             child: CircleAvatar(
               backgroundColor: const Color(0xFFF2F4F7),
