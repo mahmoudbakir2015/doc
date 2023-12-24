@@ -6,7 +6,7 @@ import '../../constant/assets.dart';
 import '../my_appointment/my_appointment_screen/my_appointment_screen.dart';
 import '../home/home_screen/home_screen.dart';
 import '../chat/message_page/messages_page.dart';
-import '../profile/profile.dart';
+import '../profile/profile_page/profile.dart';
 import '../search/search.dart';
 
 class MainScreen extends StatefulWidget {

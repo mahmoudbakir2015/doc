@@ -7,7 +7,6 @@ import '../../../constant/style.dart';
 import '../../../widgets/custom_list_tile.dart';
 import '../../../widgets/custom_search_filter.dart';
 import '../chat_page/chat_page.dart';
-import '../items.dart';
 
 // ignore: must_be_immutable
 class MessagesView extends StatelessWidget {
@@ -34,7 +33,6 @@ class MessagesView extends StatelessWidget {
                     builder: (context) => const CreateMessage(),
                   ),
                 );
-                // buildCreateMessage(context, search);
               },
               child: SvgPicture.asset(
                 Assets.messageAdd,

@@ -8,7 +8,7 @@ class SubText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      maxLines: 3,
+      maxLines: 7,
       style: const TextStyle(
         color: Color(0xFF757575),
         fontSize: 14,

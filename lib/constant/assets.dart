@@ -46,6 +46,12 @@ abstract class Assets {
   static const String send = 'assets/images/send.svg';
   static const String back = 'assets/images/back.svg';
   static const String speaker = 'assets/images/speaker.svg';
+  static const String faq = 'assets/images/faq.svg';
+  static const String language = 'assets/images/language.svg';
+  static const String logout = 'assets/images/logout.svg';
+  static const String security = 'assets/images/security.svg';
+  static const String notification = 'assets/images/notification.svg';
+
   static const String docImage =
       'https://purepng.com/public/uploads/large/purepng.com-doctorsdoctorsdoctors-and-nursesa-qualified-practitioner-of-medicine-aclinicianmedical-practitionermale-doctor-1421526856786dbhlu.png';
 }

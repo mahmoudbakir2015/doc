@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constant/assets.dart';
 import '../../../constant/style.dart';
 import '../../../widgets/custom_bold_text.dart';
-import '../../home/doctor_page/items.dart';
+import '../../../widgets/sub_text.dart';
 
 AppBar buildAppBar({
   required Function() actionTap,
@@ -22,7 +22,7 @@ AppBar buildAppBar({
       mainAxisSize: MainAxisSize.min,
       children: [
         buildBoldText(text: 'Dr. Randy Wigham'),
-        buildLightText(text: 'Online'),
+        const SubText(text: 'Online'),
       ],
     ),
     actions: [
@@ -123,7 +123,7 @@ Column buildMessage({
           ),
         ),
       ),
-      buildLightText(text: date),
+      SubText(text: date),
     ],
   );
 }

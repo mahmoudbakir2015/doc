@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../constant/assets.dart';
 import '../../../widgets/custom_bold_text.dart';
+import '../../../widgets/sub_text.dart';
 
 Column buildAbout({
   required String aboutMe,
@@ -12,20 +13,35 @@ Column buildAbout({
 }) {
   return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
     buildBoldText(text: 'About me'),
-    buildLightText(
-      text: aboutMe,
+    Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 8.0,
+      ),
+      child: SubText(
+        text: aboutMe,
+      ),
     ),
     buildBoldText(
       text: 'Working Time',
     ),
-    buildLightText(
-      text: workingTime,
+    Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 8.0,
+      ),
+      child: SubText(
+        text: workingTime,
+      ),
     ),
     buildBoldText(
       text: 'STR',
     ),
-    buildLightText(
-      text: sTR,
+    Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 8.0,
+      ),
+      child: SubText(
+        text: sTR,
+      ),
     ),
     buildBoldText(
       text: 'Pengalaman Praktik',
@@ -33,25 +49,15 @@ Column buildAbout({
     buildBoldText(
       text: 'RSPAD Gatot Soebroto',
     ),
-    buildLightText(
-      text: footer,
-    ),
-  ]);
-}
-
-Padding buildLightText({required String text}) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10.0),
-    child: Text(
-      text,
-      style: const TextStyle(
-        color: Color(0xFF757575),
-        fontSize: 14,
-        fontFamily: 'Inter',
-        fontWeight: FontWeight.w400,
+    Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 8.0,
+      ),
+      child: SubText(
+        text: footer,
       ),
     ),
-  );
+  ]);
 }
 
 Column buildLocation(
@@ -60,7 +66,10 @@ Column buildLocation(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       buildBoldText(text: 'Practice Place'),
-      buildLightText(text: practicePlace),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: SubText(text: practicePlace),
+      ),
       buildBoldText(text: 'Location Map'),
       Expanded(
         child: GestureDetector(
@@ -121,7 +130,7 @@ Row buildReviews({
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                buildLightText(text: date),
+                SubText(text: date),
               ],
             ),
             SizedBox(
@@ -136,7 +145,7 @@ Row buildReviews({
                 },
               ),
             ),
-            buildLightText(text: comment),
+            SubText(text: comment),
           ],
         ),
       ),

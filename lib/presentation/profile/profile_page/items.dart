@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../constant/assets.dart';
-import '../../constant/style.dart';
-import '../../widgets/custom_list_tile.dart';
+import '../../../constant/assets.dart';
+import '../../../constant/style.dart';
+import '../../../widgets/custom_list_tile.dart';
 
 GestureDetector buildListTile(
     {required String text,
@@ -75,7 +75,7 @@ Expanded buildChooseButton(
   );
 }
 
-Positioned buildBar(BuildContext context) {
+Positioned buildBar({required BuildContext context, void Function()? setting}) {
   return Positioned(
     top: MediaQuery.of(context).size.height * .04,
     right: 0,
@@ -86,7 +86,7 @@ Positioned buildBar(BuildContext context) {
         isProfile: true,
         text: 'profile',
         trailing: GestureDetector(
-          onTap: () {},
+          onTap: setting,
           child: SvgPicture.asset(
             Assets.setting,
           ),

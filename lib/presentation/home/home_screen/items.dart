@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constant/assets.dart';
 import '../../../constant/style.dart';
 
@@ -31,17 +32,13 @@ Row buildNotification({required String name, void Function()? onTap}) {
       ),
       GestureDetector(
         onTap: onTap,
-        child: const CircleAvatar(
-          backgroundColor: Color(0xFFF5F5F5),
+        child: CircleAvatar(
+          backgroundColor: const Color(0xFFF5F5F5),
           child: Center(
             child: Stack(
               children: [
-                Icon(
-                  Icons.notifications_none,
-                  color: Colors.black,
-                  size: 25,
-                ),
-                Positioned(
+                SvgPicture.asset(Assets.notification),
+                const Positioned(
                   right: 0,
                   child: CircleAvatar(
                     radius: 5,

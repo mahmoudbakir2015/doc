@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/custom_bold_text.dart';
-import '../../home/doctor_page/items.dart';
+import '../../../widgets/sub_text.dart';
 
 Row buildCreateSearchedDoc({
   required String image,
@@ -25,7 +25,7 @@ Row buildCreateSearchedDoc({
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buildBoldText(text: name),
-          buildLightText(text: description),
+          SubText(text: description),
         ],
       )
     ],

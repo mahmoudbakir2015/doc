@@ -1,8 +1,9 @@
-import 'package:doc/presentation/profile/items.dart';
+import 'package:doc/presentation/profile/profile_page/items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../constant/assets.dart';
-import '../../constant/style.dart';
+import '../../../constant/assets.dart';
+import '../../../constant/style.dart';
+import '../settings/settings.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -13,7 +14,15 @@ class ProfilePage extends StatelessWidget {
       backgroundColor: const Color(0xFF247CFF),
       body: Stack(
         children: [
-          buildBar(context),
+          buildBar(
+              context: context,
+              setting: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const Settings(),
+                  ),
+                );
+              }),
           Positioned(
             top: MediaQuery.of(context).size.height * .25,
             right: 0,
