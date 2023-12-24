@@ -3,6 +3,7 @@ import 'package:doc/presentation/chat/chat_page/items.dart';
 
 import 'package:flutter/material.dart';
 import '../../../constant/data_message.dart';
+import '../video_call/video_call.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -16,7 +17,13 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(
-        actionTap: () {},
+        actionTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const VideoCall(),
+            ),
+          );
+        },
         context: context,
       ),
       body: Column(
