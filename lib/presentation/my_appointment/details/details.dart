@@ -22,6 +22,7 @@ class RescheduleDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomListTile(
+              isMain: false,
               text: 'Details',
             ),
             Row(

@@ -51,6 +51,13 @@ abstract class Assets {
   static const String logout = 'assets/images/logout.svg';
   static const String security = 'assets/images/security.svg';
   static const String notification = 'assets/images/notification.svg';
+  static const String scanner = 'assets/images/scanner.svg';
+  static const String dots = 'assets/images/dots.svg';
+  static const String applepayLogo = 'assets/images/applepay_logo.svg';
+  static const String dana = 'assets/images/dana.svg';
+  static const String mastercardLogo = 'assets/images/mastercard_logo.svg';
+  static const String payoneerLogo = 'assets/images/payoneer_logo.svg';
+  static const String paypal = 'assets/images/paypal.svg';
 
   static const String docImage =
       'https://purepng.com/public/uploads/large/purepng.com-doctorsdoctorsdoctors-and-nursesa-qualified-practitioner-of-medicine-aclinicianmedical-practitionermale-doctor-1421526856786dbhlu.png';

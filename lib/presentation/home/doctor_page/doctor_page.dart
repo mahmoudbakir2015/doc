@@ -4,6 +4,7 @@ import 'package:doc/presentation/home/doctor_page/items.dart';
 import 'package:doc/widgets/custom_list_tile.dart';
 import 'package:doc/widgets/default_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/doc_info.dart';
 import '../../chat/chat_page/chat_page.dart';
 
@@ -37,10 +38,11 @@ class _DoctorPageState extends State<DoctorPage>
         child: Column(
           children: [
             CustomListTile(
+              isMain: false,
               text: 'Dr Randy Wigham',
               trailing: GestureDetector(
                 onTap: () {},
-                child: const Icon(Icons.edit),
+                child: SvgPicture.asset(Assets.dots),
               ),
             ),
             Padding(

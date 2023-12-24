@@ -2,6 +2,7 @@ import 'package:doc/constant/style.dart';
 import 'package:doc/presentation/home/doctor_page/doctor_page.dart';
 import 'package:doc/widgets/custom_list_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../constant/assets.dart';
 import '../../../widgets/custom_search_filter.dart';
 import '../../../widgets/custom_space.dart';
@@ -29,10 +30,11 @@ class _RecommendationDoctorState extends State<RecommendationDoctor> {
         child: Column(
           children: [
             CustomListTile(
+              isMain: false,
               text: 'RecommendationDoctor',
               trailing: GestureDetector(
                 onTap: () {},
-                child: const Icon(Icons.edit),
+                child: SvgPicture.asset(Assets.dots),
               ),
             ),
             buildCustomSpace(context),

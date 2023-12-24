@@ -11,53 +11,56 @@ Column buildAbout({
   required String sTR,
   required String footer,
 }) {
-  return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-    buildBoldText(text: 'About me'),
-    Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      buildBoldText(text: 'About me'),
+      Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 8.0,
+        ),
+        child: SubText(
+          text: aboutMe,
+        ),
       ),
-      child: SubText(
-        text: aboutMe,
+      buildBoldText(
+        text: 'Working Time',
       ),
-    ),
-    buildBoldText(
-      text: 'Working Time',
-    ),
-    Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
+      Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 8.0,
+        ),
+        child: SubText(
+          text: workingTime,
+        ),
       ),
-      child: SubText(
-        text: workingTime,
+      buildBoldText(
+        text: 'STR',
       ),
-    ),
-    buildBoldText(
-      text: 'STR',
-    ),
-    Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
+      Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 8.0,
+        ),
+        child: SubText(
+          text: sTR,
+        ),
       ),
-      child: SubText(
-        text: sTR,
+      buildBoldText(
+        text: 'Pengalaman Praktik',
       ),
-    ),
-    buildBoldText(
-      text: 'Pengalaman Praktik',
-    ),
-    buildBoldText(
-      text: 'RSPAD Gatot Soebroto',
-    ),
-    Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
+      buildBoldText(
+        text: 'RSPAD Gatot Soebroto',
       ),
-      child: SubText(
-        text: footer,
+      Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 8.0,
+        ),
+        child: SubText(
+          text: footer,
+        ),
       ),
-    ),
-  ]);
+    ],
+  );
 }
 
 Column buildLocation(

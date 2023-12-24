@@ -34,6 +34,7 @@ class _RescheduleState extends State<Reschedule> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomListTile(
+              isMain: false,
               text: 'Reschedule',
             ),
             Padding(
