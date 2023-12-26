@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:doc/presentation/main_screen/main_screen.dart';
 
+import '../core/cashe_helper.dart';
+
 // ignore: must_be_immutable
 class CustomListTile extends StatelessWidget {
   Widget? trailing;
@@ -27,7 +29,11 @@ class CustomListTile extends StatelessWidget {
           ? GestureDetector(
               onTap: () {
                 Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => const MainScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => MainScreen(
+                              token:
+                                  CacheHelper.getData(key: 'token').toString(),
+                            )),
                     (route) => false);
               },
               child: Icon(

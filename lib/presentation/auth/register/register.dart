@@ -31,10 +31,12 @@ class _RegisterState extends State<Register> {
         listener: (context, state) {
           if (state is RegisterSuccessed) {
             CacheHelper.saveData(
-                key: 'authroization', value: state.authModel.data?.token);
+                key: 'token', value: state.authModel.data?.token);
             Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (context) => const MainScreen(),
+                builder: (context) => MainScreen(
+                  token: state.authModel.data!.token.toString(),
+                ),
               ),
               (route) => false,
             );

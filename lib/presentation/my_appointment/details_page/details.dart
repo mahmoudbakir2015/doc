@@ -1,4 +1,5 @@
 import 'package:doc/constant/style.dart';
+import 'package:doc/core/cashe_helper.dart';
 import 'package:doc/presentation/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -78,7 +79,11 @@ class RescheduleDetails extends StatelessWidget {
             DefaultButton(
               onPressed: () {
                 Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => const MainScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => MainScreen(
+                      token: CacheHelper.getData(key: 'token').toString(),
+                    ),
+                  ),
                   (route) => false,
                 );
               },

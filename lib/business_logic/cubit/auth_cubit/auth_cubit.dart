@@ -126,8 +126,8 @@ class AuthCubit extends Cubit<AuthStates> {
       data: null,
       authorization: authorization,
     ).then((value) {
-      CacheHelper.clearData(key: 'authroization');
-      CacheHelper.removeData(key: 'authroization');
+      CacheHelper.clearData(key: 'token');
+      CacheHelper.removeData(key: 'token');
       emit(LogoutSuccessed());
     });
   }

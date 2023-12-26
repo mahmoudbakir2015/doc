@@ -26,12 +26,15 @@ class Login extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthStates>(
         listener: (context, state) {
           if (state is LoginSuccessed) {
+            print(state.authModel.data?.token);
             CacheHelper.saveData(
-                key: 'authroization', value: state.authModel.data?.token);
+                key: 'token', value: state.authModel.data?.token);
 
             Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (context) => const MainScreen(),
+                builder: (context) => MainScreen(
+                  token: state.authModel.data!.token.toString(),
+                ),
               ),
               (route) => false,
             );

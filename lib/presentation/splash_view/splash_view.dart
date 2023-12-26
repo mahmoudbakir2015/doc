@@ -16,10 +16,12 @@ class _SplashViewState extends State<SplashView> {
   @override
   initState() {
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      if (CacheHelper.getData(key: 'authroization') != null) {
+      if (CacheHelper.getData(key: 'token') != null) {
         Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => const MainScreen(),
+            builder: (context) => MainScreen(
+              token: CacheHelper.getData(key: 'token').toString(),
+            ),
           ),
           (route) => false,
         );

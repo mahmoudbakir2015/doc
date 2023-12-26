@@ -1,7 +1,5 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:doc/core/cashe_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../constant/constants.dart';
@@ -13,30 +11,18 @@ class DioHelper {
   static init({bool isBaseUrl = true}) {
     dio = Dio(
       BaseOptions(
-          baseUrl: Constants.baseUrl,
-          receiveDataWhenStatusError: true,
-          connectTimeout: const Duration(seconds: 10),
-          receiveTimeout: const Duration(seconds: 10),
-          headers: {
-            // "Authorization":
-            //     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NpbHZlci50YWctc29mdC5jb20vYXBpL3YxL3VzZXIvbG9naW5fcGhvbmUiLCJpYXQiOjE2OTUyMDA1OTgsImV4cCI6MTY5NTIwNDE5OCwibmJmIjoxNjk1MjAwNTk4LCJqdGkiOiJKalZaRDFpamEwQUxRb0ZIIiwic3ViIjoiMyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.LW268CmC9lsmD7wsZ8689MVYT9ZXhP1AVcqgUZAc4to",
-            // "Authorization": 'Bearer ${CacheHelper.getData(key: "Token")}',
-            'Content-Type': 'application/json',
-            // "lang": CacheHelper.getData(key: "lang") == "ar_EG" ? "ar" : "en",
-            "Accept": "application/json"
-          }),
+        baseUrl: Constants.baseUrl,
+        receiveDataWhenStatusError: true,
+        connectTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10),
+      ),
     );
     dioGoogleMap = Dio(
       BaseOptions(
-          receiveDataWhenStatusError: true,
-          connectTimeout: const Duration(seconds: 10),
-          receiveTimeout: const Duration(seconds: 10),
-          headers: {
-            // "Authorization": 'Bearer ${CacheHelper.getData(key: "Token")}',
-            'Content-Type': 'application/json',
-            // "lang": CacheHelper.getData(key: "lang") == "ar_EG" ? "ar" : "en",
-            "Accept": "application/json"
-          }),
+        receiveDataWhenStatusError: true,
+        connectTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10),
+      ),
     );
 
     dio!.interceptors.add(PrettyDioLogger(
@@ -67,7 +53,6 @@ class DioHelper {
         options: Options(headers: {
           "Authorization": 'Bearer $authorization',
           'Content-Type': 'application/json',
-          // "lang": CacheHelper.getData(key: "lang") == "ar_EG" ? "ar" : "en",
           "Accept": "application/json"
         }));
   }
@@ -76,12 +61,15 @@ class DioHelper {
     required String endPoint,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? data,
+    String? authorization,
   }) {
-    return dio!.get(
-      endPoint,
-      queryParameters: queryParameters,
-      data: data,
-    );
+    return dio!.get(endPoint,
+        queryParameters: queryParameters,
+        data: data,
+        options: Options(headers: {
+          "Authorization": 'Bearer $authorization',
+          "Accept": "application/json"
+        }));
   }
 
   static Future<Response> putData({

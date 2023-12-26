@@ -1,86 +1,72 @@
+import 'package:doc/business_logic/cubit/home_cubit/home_cubit.dart';
+import 'package:doc/business_logic/cubit/home_cubit/home_states.dart';
 import 'package:doc/constant/style.dart';
 import 'package:doc/presentation/main_screen/items.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../constant/assets.dart';
-import '../my_appointment/my_appointment_screen/my_appointment_screen.dart';
-import '../home/home_screen/home_screen.dart';
-import '../chat/message_page/messages_page.dart';
-import '../profile/profile.dart';
-import '../search/search.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class MainScreen extends StatelessWidget {
+  final String token;
+  const MainScreen({super.key, required this.token});
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  List<Widget> screen = [
-    const Home(),
-    MessagesView(),
-    SearchView(),
-    const AppointmentView(),
-    const ProfilePage(),
-  ];
-  int index = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screen[index],
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
-        child: Row(
-          children: [
-            buildIconNav(
-                color: index == 0 ? Colors.blue : Colors.black,
-                icon: Assets.home,
-                onTap: () {
-                  index = 0;
-                  setState(() {});
-                }),
-            const Spacer(flex: 1),
-            buildIconNav(
-                color: index == 1 ? Colors.blue : Colors.black,
-                icon: Assets.chat,
-                onTap: () {
-                  index = 1;
-                  setState(() {});
-                }),
-            const Spacer(
-              flex: 2,
+    return BlocBuilder<AppCubit, AppStates>(
+      builder: (context, state) {
+        AppCubit cubit = AppCubit.get(context);
+        return Scaffold(
+          body: cubit.screen[cubit.currentIndex],
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: Styles.appPadding),
+            child: Row(
+              children: [
+                buildIconNav(
+                    color: cubit.currentIndex == 0 ? Colors.blue : Colors.black,
+                    icon: Assets.home,
+                    onTap: () {
+                      cubit.changeNav(tap: 0);
+                    }),
+                const Spacer(flex: 1),
+                buildIconNav(
+                    color: cubit.currentIndex == 1 ? Colors.blue : Colors.black,
+                    icon: Assets.chat,
+                    onTap: () {
+                      cubit.changeNav(tap: 1);
+                    }),
+                const Spacer(
+                  flex: 2,
+                ),
+                buildIconNav(
+                    color: cubit.currentIndex == 3 ? Colors.blue : Colors.black,
+                    icon: Assets.calender,
+                    onTap: () {
+                      cubit.changeNav(tap: 3);
+                    }),
+                const Spacer(
+                  flex: 1,
+                ),
+                buildIconNav(
+                    image:
+                        'https://th.bing.com/th/id/OIP.4siKIW3oZ4kEo0vkEVQ5hgHaLH?rs=1&pid=ImgDetMain',
+                    isProfile: true,
+                    color: cubit.currentIndex == 4 ? Colors.blue : Colors.black,
+                    icon: Assets.home,
+                    onTap: () {
+                      cubit.changeNav(tap: 4);
+                    }),
+              ],
             ),
-            buildIconNav(
-                color: index == 3 ? Colors.blue : Colors.black,
-                icon: Assets.calender,
-                onTap: () {
-                  index = 3;
-                  setState(() {});
-                }),
-            const Spacer(
-              flex: 1,
-            ),
-            buildIconNav(
-                image:
-                    'https://th.bing.com/th/id/OIP.4siKIW3oZ4kEo0vkEVQ5hgHaLH?rs=1&pid=ImgDetMain',
-                isProfile: true,
-                color: index == 4 ? Colors.blue : Colors.black,
-                icon: Assets.home,
-                onTap: () {
-                  index = 4;
-                  setState(() {});
-                }),
-          ],
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: GestureDetector(
-          onTap: () {
-            index = 2;
-            setState(() {});
-          },
-          child: buildFloating()),
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: GestureDetector(
+              onTap: () {
+                cubit.changeNav(tap: 2);
+              },
+              child: buildFloating()),
+        );
+      },
     );
   }
 }

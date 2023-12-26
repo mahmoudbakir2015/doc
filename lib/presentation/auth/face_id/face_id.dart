@@ -1,5 +1,6 @@
 import 'package:doc/constant/assets.dart';
 import 'package:doc/constant/style.dart';
+import 'package:doc/core/cashe_helper.dart';
 import 'package:doc/widgets/light_text.dart';
 import 'package:doc/widgets/sub_text.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,10 @@ class FaceId extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
-                      builder: (context) => const MainScreen(),
+                      builder: (context) => MainScreen(
+                        token: CacheHelper.getData(key: 'authorization')
+                            .toString(),
+                      ),
                     ),
                     (route) => false);
               },

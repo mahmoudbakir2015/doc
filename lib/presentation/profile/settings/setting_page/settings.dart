@@ -138,8 +138,7 @@ class Settings extends StatelessWidget {
                                               cubit.logOut(
                                                 authorization:
                                                     CacheHelper.getData(
-                                                            key:
-                                                                'authroization')
+                                                            key: 'token')
                                                         .toString(),
                                               );
                                             },

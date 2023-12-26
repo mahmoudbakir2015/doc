@@ -1,12 +1,27 @@
+import 'package:doc/business_logic/cubit/home_cubit/home_cubit.dart';
 import 'package:doc/constant/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../constant/constants.dart';
 import '../../../widgets/custom_list_tile.dart';
 import '../../../widgets/custom_space.dart';
 import '../../../widgets/custom_speciality.dart';
 
-class DoctorSpeciality extends StatelessWidget {
-  const DoctorSpeciality({super.key});
+class DoctorSpeciality extends StatefulWidget {
+  final String authorization;
+  const DoctorSpeciality({super.key, required this.authorization});
+
+  @override
+  State<DoctorSpeciality> createState() => _DoctorSpecialityState();
+}
+
+class _DoctorSpecialityState extends State<DoctorSpeciality> {
+  @override
+  void initState() {
+    BlocProvider.of<AppCubit>(context)
+        .getAllSpecialization(authorization: widget.authorization);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
