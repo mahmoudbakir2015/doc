@@ -3,6 +3,8 @@ import 'package:doc/data/model/home_model.dart';
 import 'package:doc/data/model/specialization_model.dart';
 import 'package:doc/data/service/app_service/app_service.dart';
 
+import '../../model/doctor_model.dart';
+
 class AppRepo {
   AppService appService;
   AppRepo({
@@ -21,6 +23,16 @@ class AppRepo {
     return SpecializationModel.fromJson(
       await appService.getAllSpecializations(
         authorization: authorization,
+      ),
+    );
+  }
+
+  Future<DoctorModel> showDoc(
+      {required String authorization, required int id}) async {
+    return DoctorModel.fromJson(
+      await appService.showDoc(
+        authorization: authorization,
+        id: id,
       ),
     );
   }

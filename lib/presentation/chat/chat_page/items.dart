@@ -8,6 +8,8 @@ import '../../../widgets/custom_bold_text.dart';
 import '../../../widgets/sub_text.dart';
 
 AppBar buildAppBar({
+  required String name,
+  required String status,
   required Function() actionTap,
   required BuildContext context,
 }) {
@@ -21,8 +23,8 @@ AppBar buildAppBar({
     title: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        buildBoldText(text: 'Dr. Randy Wigham'),
-        const SubText(text: 'Online'),
+        buildBoldText(text: name),
+        SubText(text: status),
       ],
     ),
     actions: [

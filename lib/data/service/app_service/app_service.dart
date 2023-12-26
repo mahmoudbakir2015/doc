@@ -29,4 +29,18 @@ class AppService {
       print(e.toString());
     }
   }
+
+  Future<dynamic> showDoc(
+      {required String authorization, required int id}) async {
+    Response response = await DioHelper.getData(
+      endPoint: "${Endpoint.doctorShow}/$id",
+      authorization: authorization,
+    );
+    try {
+      print(response.data.toString());
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }

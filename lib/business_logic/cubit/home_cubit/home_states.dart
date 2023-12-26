@@ -1,3 +1,4 @@
+import 'package:doc/data/model/doctor_model.dart';
 import 'package:doc/data/model/home_model.dart';
 
 import '../../../data/model/specialization_model.dart';
@@ -30,4 +31,16 @@ class FailedSpecializationState extends AppStates {
   final String errorMessage;
 
   FailedSpecializationState({required this.errorMessage});
+}
+
+class SuccessedShowDocState extends AppStates {
+  final DoctorModel doctorModel;
+
+  SuccessedShowDocState({required this.doctorModel});
+}
+
+class FailedShowDocState extends AppStates {
+  final String errorMessage;
+
+  FailedShowDocState({required this.errorMessage});
 }

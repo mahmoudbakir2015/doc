@@ -1,6 +1,6 @@
 class DoctorModel {
   String? message;
-  List<Data>? data;
+  Data? data;
   bool? status;
   int? code;
 
@@ -8,12 +8,7 @@ class DoctorModel {
 
   DoctorModel.fromJson(Map<String, dynamic> json) {
     message = json['message'];
-    if (json['data'] != null) {
-      data = <Data>[];
-      json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
-      });
-    }
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     status = json['status'];
     code = json['code'];
   }
@@ -22,7 +17,7 @@ class DoctorModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.toJson();
     }
     data['status'] = this.status;
     data['code'] = this.code;

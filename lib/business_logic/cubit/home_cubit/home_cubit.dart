@@ -73,4 +73,23 @@ class AppCubit extends Cubit<AppStates> {
           ),
         );
   }
+
+  showDoc({required String authorization, required int id}) {
+    appRepo
+        .showDoc(authorization: authorization, id: id)
+        .then((value) => emit(
+              SuccessedShowDocState(
+                doctorModel: value,
+              ),
+            ))
+        .catchError(
+      (error) {
+        emit(
+          FailedShowDocState(
+            errorMessage: error.toString(),
+          ),
+        );
+      },
+    );
+  }
 }

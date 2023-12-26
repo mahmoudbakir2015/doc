@@ -1,3 +1,4 @@
+import 'package:doc/data/model/doctor_model.dart';
 import 'package:doc/presentation/chat/create_message/items.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +53,9 @@ class CreateMessage extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => const ChatPage(),
+                            builder: (context) => ChatPage(
+                              doctorModel: DoctorModel(),
+                            ),
                           ),
                         );
                       },

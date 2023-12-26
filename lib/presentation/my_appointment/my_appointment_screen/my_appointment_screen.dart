@@ -1,5 +1,6 @@
 import 'package:doc/constant/assets.dart';
 import 'package:doc/constant/style.dart';
+import 'package:doc/data/model/doctor_model.dart';
 import 'package:doc/presentation/my_appointment/my_appointment_screen/items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -92,7 +93,9 @@ class _AppointmentViewState extends State<AppointmentView>
                       chatTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => const ChatPage(),
+                            builder: (context) => ChatPage(
+                              doctorModel: DoctorModel(),
+                            ),
                           ),
                         );
                       },

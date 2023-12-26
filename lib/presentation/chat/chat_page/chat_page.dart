@@ -1,18 +1,15 @@
 import 'package:doc/constant/style.dart';
+import 'package:doc/data/model/doctor_model.dart';
 import 'package:doc/presentation/chat/chat_page/items.dart';
 
 import 'package:flutter/material.dart';
 import '../../../constant/data_message.dart';
 import '../video_call/video_call.dart';
 
-class ChatPage extends StatefulWidget {
-  const ChatPage({super.key});
+class ChatPage extends StatelessWidget {
+  final DoctorModel doctorModel;
+  const ChatPage({super.key, required this.doctorModel});
 
-  @override
-  State<ChatPage> createState() => _ChatPageState();
-}
-
-class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +22,8 @@ class _ChatPageState extends State<ChatPage> {
           );
         },
         context: context,
+        name: doctorModel.data!.name.toString(),
+        status: 'Online',
       ),
       body: Column(
         children: [

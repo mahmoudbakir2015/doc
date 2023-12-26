@@ -59,7 +59,7 @@ class DioHelper {
 
   static Future<Response> getData({
     required String endPoint,
-    Map<String, dynamic>? queryParameters,
+    dynamic queryParameters,
     Map<String, dynamic>? data,
     String? authorization,
   }) {

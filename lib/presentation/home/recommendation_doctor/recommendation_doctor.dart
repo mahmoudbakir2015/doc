@@ -9,7 +9,8 @@ import '../../../widgets/custom_space.dart';
 import '../../../widgets/doc_info.dart';
 
 class RecommendationDoctor extends StatefulWidget {
-  const RecommendationDoctor({super.key});
+  final String authorization;
+  const RecommendationDoctor({super.key, required this.authorization});
 
   @override
   State<RecommendationDoctor> createState() => _RecommendationDoctorState();
@@ -49,7 +50,10 @@ class _RecommendationDoctorState extends State<RecommendationDoctor> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const DoctorPage(),
+                          builder: (context) => DoctorPage(
+                            id: 10,
+                            authorization: widget.authorization,
+                          ),
                         ),
                       );
                     },

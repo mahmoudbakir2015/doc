@@ -5,7 +5,8 @@ import 'package:doc/widgets/custom_list_tile.dart';
 import 'package:flutter/material.dart';
 
 class FindNeaby extends StatelessWidget {
-  const FindNeaby({super.key});
+  final String authorization;
+  const FindNeaby({super.key, required this.authorization});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,10 @@ class FindNeaby extends StatelessWidget {
               buildDocCard(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const DoctorPage()));
+                      builder: (context) => DoctorPage(
+                            id: 10,
+                            authorization: authorization,
+                          )));
                 },
                 name: 'Dr. Randy Wigham',
                 description: 'RSUD Gatot Subroto',

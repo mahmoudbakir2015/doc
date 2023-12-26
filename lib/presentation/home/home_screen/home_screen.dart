@@ -1,5 +1,4 @@
 import 'package:doc/business_logic/cubit/home_cubit/home_states.dart';
-import 'package:doc/constant/assets.dart';
 import 'package:doc/presentation/home/find_nearby/find_nearby.dart';
 import 'package:doc/presentation/home/home_screen/items.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +67,9 @@ class _HomeState extends State<Home> {
                   findNearby: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const FindNeaby(),
+                        builder: (context) => FindNeaby(
+                          authorization: widget.authorization,
+                        ),
                       ),
                     );
                   },
@@ -117,7 +118,9 @@ class _HomeState extends State<Home> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const RecommendationDoctor(),
+                          builder: (context) => RecommendationDoctor(
+                            authorization: widget.authorization,
+                          ),
                         ),
                       );
                     },
@@ -131,7 +134,11 @@ class _HomeState extends State<Home> {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => const DoctorPage(),
+                              builder: (context) => DoctorPage(
+                                id: state.homeModel.data![index].doctors![0].id!
+                                    .toInt(),
+                                authorization: widget.authorization,
+                              ),
                             ),
                           );
                         },
