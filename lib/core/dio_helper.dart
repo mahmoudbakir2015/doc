@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../constant/constants.dart';
+
 class DioHelper {
   static Dio? dio;
   static Dio? dioGoogleMap;
@@ -10,13 +12,13 @@ class DioHelper {
   static init({bool isBaseUrl = true}) {
     dio = Dio(
       BaseOptions(
-          baseUrl: ' Constant.baseUrl',
+          baseUrl: Constants.baseUrl,
           receiveDataWhenStatusError: true,
           connectTimeout: const Duration(seconds: 10),
           receiveTimeout: const Duration(seconds: 10),
           headers: {
-            "Authorization":
-                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NpbHZlci50YWctc29mdC5jb20vYXBpL3YxL3VzZXIvbG9naW5fcGhvbmUiLCJpYXQiOjE2OTUyMDA1OTgsImV4cCI6MTY5NTIwNDE5OCwibmJmIjoxNjk1MjAwNTk4LCJqdGkiOiJKalZaRDFpamEwQUxRb0ZIIiwic3ViIjoiMyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.LW268CmC9lsmD7wsZ8689MVYT9ZXhP1AVcqgUZAc4to",
+            // "Authorization":
+            //     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NpbHZlci50YWctc29mdC5jb20vYXBpL3YxL3VzZXIvbG9naW5fcGhvbmUiLCJpYXQiOjE2OTUyMDA1OTgsImV4cCI6MTY5NTIwNDE5OCwibmJmIjoxNjk1MjAwNTk4LCJqdGkiOiJKalZaRDFpamEwQUxRb0ZIIiwic3ViIjoiMyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.LW268CmC9lsmD7wsZ8689MVYT9ZXhP1AVcqgUZAc4to",
             // "Authorization": 'Bearer ${CacheHelper.getData(key: "Token")}',
             'Content-Type': 'application/json',
             // "lang": CacheHelper.getData(key: "lang") == "ar_EG" ? "ar" : "en",
@@ -58,7 +60,10 @@ class DioHelper {
     required String endPoint,
     required dynamic data,
   }) {
-    return dio!.post(endPoint, data: data);
+    return dio!.post(
+      endPoint,
+      data: data,
+    );
   }
 
   static Future<Response> getData({
@@ -66,7 +71,11 @@ class DioHelper {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? data,
   }) {
-    return dio!.get(endPoint, queryParameters: queryParameters, data: data);
+    return dio!.get(
+      endPoint,
+      queryParameters: queryParameters,
+      data: data,
+    );
   }
 
   static Future<Response> putData({

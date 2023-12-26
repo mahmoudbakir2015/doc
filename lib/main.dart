@@ -1,10 +1,11 @@
+import 'package:doc/core/dio_helper.dart';
 import 'package:doc/core/observer.dart';
 import 'package:doc/presentation/splash_view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  // DioHelper.init();
+  DioHelper.init();
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }

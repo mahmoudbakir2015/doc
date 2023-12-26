@@ -1,6 +1,7 @@
 import 'package:doc/constant/assets.dart';
 
 abstract class Constants {
+  static String baseUrl = 'https://vcare.integration25.com/api/';
   static const List<String> flags = [
     'assets/images/england.svg',
     'assets/images/america.svg',

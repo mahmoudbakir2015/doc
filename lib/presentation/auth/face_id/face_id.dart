@@ -1,12 +1,12 @@
 import 'package:doc/constant/assets.dart';
 import 'package:doc/constant/style.dart';
-import 'package:doc/presentation/home/home_screen/home_screen.dart';
 import 'package:doc/widgets/light_text.dart';
 import 'package:doc/widgets/sub_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../widgets/default_button.dart';
+import '../../main_screen/main_screen.dart';
 
 class FaceId extends StatelessWidget {
   const FaceId({super.key});
@@ -43,11 +43,11 @@ class FaceId extends StatelessWidget {
             const Spacer(),
             DefaultButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const Home(),
-                  ),
-                );
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => const MainScreen(),
+                    ),
+                    (route) => false);
               },
               text: 'Submit',
             ),

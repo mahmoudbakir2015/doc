@@ -53,7 +53,7 @@ class _PhoneFormState extends State<PhoneForm> {
         if (value!.isEmpty) {
           return "this field shouldn't be empty";
         } else if (value.length < 11) {
-          return "Your number  should be greater than 11 nums";
+          return "Your number  should be greater than 10 nums";
         } else {
           return null;
         }
