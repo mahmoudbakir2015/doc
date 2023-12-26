@@ -1,5 +1,7 @@
+import 'package:doc/presentation/main_screen/main_screen.dart';
 import 'package:doc/presentation/middel_ware/middel_ware.dart';
 import 'package:flutter/material.dart';
+import '../../core/cashe_helper.dart';
 import '../../widgets/logo.dart';
 import '../../widgets/water_mark.dart';
 
@@ -13,14 +15,23 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   initState() {
-    Future.delayed(const Duration(seconds: 3)).then(
-      (value) => Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-          builder: (context) => MiddelWare(),
-        ),
-        (route) => false,
-      ),
-    );
+    Future.delayed(const Duration(seconds: 3)).then((value) {
+      if (CacheHelper.getData(key: 'authroization') != null) {
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => const MainScreen(),
+          ),
+          (route) => false,
+        );
+      } else {
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => MiddelWare(),
+          ),
+          (route) => false,
+        );
+      }
+    });
     super.initState();
   }
 
