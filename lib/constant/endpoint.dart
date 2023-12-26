@@ -7,10 +7,10 @@ class Endpoint {
   static String appointmentStore = 'appointment/store';
   static String getAllCity = 'city/index';
   static String cityShow = 'city/show/';
-  static String getDoctor = 'doctor/index';
+  static String getAllDoctor = 'doctor/index';
   static String doctorShow = 'doctor/show/';
   static String doctorFilter = 'doctor/doctor-filter';
-  static String doctorsearch = 'doctor/doctor-search';
+  static String doctorsearch = 'doctor/doctor-search?name=';
   static String specialization = 'specialization/index';
   static String specializationShow = 'specialization/show/';
 }

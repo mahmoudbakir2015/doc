@@ -1,4 +1,5 @@
 import 'package:doc/business_logic/cubit/home_cubit/home_states.dart';
+
 import 'package:doc/data/repository/app_repo/app_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,10 +16,12 @@ class AppCubit extends Cubit<AppStates> {
   static AppCubit get(context) => BlocProvider.of(context);
   List<Widget> screen = [
     Home(
-      authorization: CacheHelper.getData(key: 'token').toString(),
+      token: CacheHelper.getData(key: 'token').toString(),
     ),
     MessagesView(),
-    SearchView(),
+    SearchView(
+      token: CacheHelper.getData(key: 'token').toString(),
+    ),
     const AppointmentView(),
     const ProfilePage(),
   ];
@@ -27,10 +30,11 @@ class AppCubit extends Cubit<AppStates> {
     currentIndex = tap;
     switch (currentIndex) {
       case 0:
-        getData(
-            authorization:
-                CacheHelper.getData(key: 'authorization').toString());
+        getData(authorization: CacheHelper.getData(key: 'token').toString());
         break;
+      // case 1:
+      //   showDoc(authorization: CacheHelper.getData(key: 'token').toString(), id: );
+      //   break;
     }
 
     emit(SuccessedChangeNav());
@@ -86,6 +90,51 @@ class AppCubit extends Cubit<AppStates> {
       (error) {
         emit(
           FailedShowDocState(
+            errorMessage: error.toString(),
+          ),
+        );
+      },
+    );
+  }
+
+  getAllDoctors({
+    required String authorization,
+  }) {
+    appRepo
+        .getAllDoctors(authorization: authorization)
+        .then((value) => emit(
+              SuccessedGetAllDocState(
+                allDoctorModel: value,
+              ),
+            ))
+        .catchError(
+      (error) {
+        emit(
+          FailedGetAllDocState(
+            errorMessage: error.toString(),
+          ),
+        );
+      },
+    );
+  }
+
+  searchDoc({
+    required String authorization,
+    required String name,
+  }) {
+    appRepo
+        .searchDoc(authorization: authorization, name: name)
+        .then(
+          (value) => emit(
+            SuccessedSearchDocState(
+              doctorModel: value,
+            ),
+          ),
+        )
+        .catchError(
+      (error) {
+        emit(
+          FailedSearchDocState(
             errorMessage: error.toString(),
           ),
         );

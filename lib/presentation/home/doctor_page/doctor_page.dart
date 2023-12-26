@@ -10,11 +10,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/doc_info.dart';
 import '../../chat/chat_page/chat_page.dart';
+import '../../main_screen/main_screen.dart';
 
 class DoctorPage extends StatefulWidget {
   final int id;
-  final String authorization;
-  const DoctorPage({super.key, required this.id, required this.authorization});
+  final String token;
+  const DoctorPage({super.key, required this.id, required this.token});
 
   @override
   State<DoctorPage> createState() => _DoctorPageState();
@@ -26,7 +27,7 @@ class _DoctorPageState extends State<DoctorPage>
   @override
   void initState() {
     BlocProvider.of<AppCubit>(context)
-        .showDoc(authorization: widget.authorization, id: widget.id);
+        .showDoc(authorization: widget.token, id: widget.id);
     _tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
@@ -48,6 +49,17 @@ class _DoctorPageState extends State<DoctorPage>
               child: Column(
                 children: [
                   CustomListTile(
+                    isMain: false,
+                    back: () {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => MainScreen(
+                            token: widget.token,
+                          ),
+                        ),
+                        (route) => false,
+                      );
+                    },
                     text: state.doctorModel.data!.name.toString(),
                     trailing: GestureDetector(
                       onTap: () {},

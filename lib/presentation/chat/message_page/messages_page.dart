@@ -12,7 +12,9 @@ import '../chat_page/chat_page.dart';
 // ignore: must_be_immutable
 class MessagesView extends StatelessWidget {
   TextEditingController search = TextEditingController();
-  MessagesView({super.key});
+  MessagesView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

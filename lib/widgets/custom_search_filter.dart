@@ -13,9 +13,11 @@ import '../constant/assets.dart';
 // ignore: must_be_immutable
 class CustomSearchFilter extends StatefulWidget {
   bool isMap;
+  void Function(String)? onChanged;
   CustomSearchFilter({
     Key? key,
     this.isMap = false,
+    this.onChanged,
     required this.controller,
   }) : super(key: key);
 
@@ -38,6 +40,7 @@ class _CustomSearchFilterState extends State<CustomSearchFilter> {
           Expanded(
             flex: 14,
             child: TextFormField(
+              onChanged: widget.onChanged,
               controller: widget.controller,
               decoration: InputDecoration(
                 hintText: 'Search',

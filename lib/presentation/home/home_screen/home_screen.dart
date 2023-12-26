@@ -15,8 +15,8 @@ import '../notifications/notifications.dart';
 import '../recommendation_doctor/recommendation_doctor.dart';
 
 class Home extends StatefulWidget {
-  final String authorization;
-  const Home({super.key, required this.authorization});
+  final String token;
+  const Home({super.key, required this.token});
 
   @override
   State<Home> createState() => _HomeState();
@@ -26,8 +26,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<AppCubit>(context)
-        .getData(authorization: widget.authorization);
+    BlocProvider.of<AppCubit>(context).getData(authorization: widget.token);
   }
 
   @override
@@ -68,7 +67,7 @@ class _HomeState extends State<Home> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => FindNeaby(
-                          authorization: widget.authorization,
+                          token: widget.token,
                         ),
                       ),
                     );
@@ -119,7 +118,7 @@ class _HomeState extends State<Home> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => RecommendationDoctor(
-                            authorization: widget.authorization,
+                            token: widget.token,
                           ),
                         ),
                       );
@@ -137,7 +136,7 @@ class _HomeState extends State<Home> {
                               builder: (context) => DoctorPage(
                                 id: state.homeModel.data![index].doctors![0].id!
                                     .toInt(),
-                                authorization: widget.authorization,
+                                token: widget.token,
                               ),
                             ),
                           );

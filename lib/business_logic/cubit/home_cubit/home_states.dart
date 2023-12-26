@@ -1,3 +1,4 @@
+import 'package:doc/data/model/all_doc_model.dart';
 import 'package:doc/data/model/doctor_model.dart';
 import 'package:doc/data/model/home_model.dart';
 
@@ -43,4 +44,28 @@ class FailedShowDocState extends AppStates {
   final String errorMessage;
 
   FailedShowDocState({required this.errorMessage});
+}
+
+class SuccessedGetAllDocState extends AppStates {
+  final AllDoctorModel allDoctorModel;
+
+  SuccessedGetAllDocState({required this.allDoctorModel});
+}
+
+class FailedGetAllDocState extends AppStates {
+  final String errorMessage;
+
+  FailedGetAllDocState({required this.errorMessage});
+}
+
+class SuccessedSearchDocState extends AppStates {
+  final AllDoctorModel doctorModel;
+
+  SuccessedSearchDocState({required this.doctorModel});
+}
+
+class FailedSearchDocState extends AppStates {
+  final String errorMessage;
+
+  FailedSearchDocState({required this.errorMessage});
 }

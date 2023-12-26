@@ -4,9 +4,11 @@ import 'package:doc/presentation/home/find_nearby/items.dart';
 import 'package:doc/widgets/custom_list_tile.dart';
 import 'package:flutter/material.dart';
 
+import '../../main_screen/main_screen.dart';
+
 class FindNeaby extends StatelessWidget {
-  final String authorization;
-  const FindNeaby({super.key, required this.authorization});
+  final String token;
+  const FindNeaby({super.key, required this.token});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,18 @@ class FindNeaby extends StatelessWidget {
               left: Styles.appPadding,
               right: Styles.appPadding,
             ),
-            child: CustomListTile(text: 'Find Nearby'),
+            child: CustomListTile(
+                back: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                        builder: (context) => MainScreen(
+                              token: token,
+                            )),
+                    (route) => false,
+                  );
+                },
+                isMain: false,
+                text: 'Find Nearby'),
           ),
           Stack(
             children: [
@@ -30,7 +43,7 @@ class FindNeaby extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => DoctorPage(
                             id: 10,
-                            authorization: authorization,
+                            token: token,
                           )));
                 },
                 name: 'Dr. Randy Wigham',
