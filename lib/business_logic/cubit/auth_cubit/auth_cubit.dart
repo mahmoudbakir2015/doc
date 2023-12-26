@@ -2,11 +2,13 @@
 
 import 'package:doc/business_logic/cubit/auth_cubit/auth_states.dart';
 import 'package:doc/constant/endpoint.dart';
+import 'package:doc/core/cashe_helper.dart';
 import 'package:doc/data/model/auth_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/dio_helper.dart';
 import '../../../data/repository/auth/auth_repo.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthCubit extends Cubit<AuthStates> {
   AuthCubit()
@@ -87,55 +89,60 @@ class AuthCubit extends Cubit<AuthStates> {
     );
   }
 
-  // Future register({required dynamic data}) async {
-  //   return await authRepo
-  //       ?.createUser(
-  //         data: data,
-  //       )
-  //       .then((value) => {
-  //             emit(
-  //               RegisterSuccessed(
-  //                 authModel: value,
-  //               ),
-  //             )
-  //           })
-  //       .catchError((error) {
-  //     emit(
-  //       RegisterFailed(
-  //         errorMessage: error.toString(),
-  //       ),
-  //     );
-  //   });
-  // }
+  void buildToast({
+    required String msg,
+    required ToastStates state,
+  }) {
+    Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 5,
+      backgroundColor: chooseToastColor(state),
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
 
-  // void userLogin({
-  //   required String email,
-  //   required String password,
-  // }) {
-  //   authRepo.checkuser(data: {
-  //     'email': email,
-  //     'password': password,
-  //   }).then(
-  //     (value) {
-  //       authModel = AuthModel.fromJson(value.data);
-  //       emit(LoginSuccessed(authModel: authModel!));
-  //     },
-  //   ).catchError(
-  //     (error) {
-  //       emit(
-  //         LoginFailed(
-  //           errorMessage: error.toString(),
+  Color? chooseToastColor(ToastStates state) {
+    Color? color;
+    switch (state) {
+      case ToastStates.success:
+        color = Colors.green;
+        break;
+      case ToastStates.warning:
+        color = Colors.amberAccent;
+        break;
+      case ToastStates.error:
+        color = Colors.red;
+        break;
+    }
+    return color;
+  }
+
+  logOut({required String authorization}) {
+    DioHelper.postData(
+      endPoint: Endpoint.logout,
+      data: null,
+      authorization: authorization,
+    ).then((value) {
+      CacheHelper.clearData(key: 'authroization');
+      CacheHelper.removeData(key: 'authroization');
+      emit(LogoutSuccessed());
+    });
+  }
+
+  // Future logout() async {
+  //   return await authRepo?.logOut(authorization: authorization).then(
+  //         (value) => emit(
+  //           LogoutSuccessed(),
   //         ),
   //       );
-  //     },
-  //   );
   // }
+}
 
-  Future logout({required String authorization}) async {
-    return await authRepo?.logOut(authorization: authorization).then(
-          (value) => emit(
-            LogoutSuccessed(),
-          ),
-        );
-  }
+enum ToastStates {
+  success,
+  error,
+  warning,
 }

@@ -37,7 +37,11 @@ class Login extends StatelessWidget {
             );
           }
           if (state is LoginFailed) {
-            print(state.errorMessage);
+            AuthCubit cubit = AuthCubit.get(context);
+            cubit.buildToast(
+              msg: state.errorMessage,
+              state: ToastStates.error,
+            );
             SnackBar(
               content: Text(
                 state.errorMessage,
@@ -88,14 +92,10 @@ class Login extends StatelessWidget {
                               text: 'Login',
                               onPressed: () {
                                 if (cubit.formKey.currentState!.validate()) {
-                                  try {
-                                    cubit.userLogin(
-                                      email: cubit.email.text,
-                                      password: cubit.password.text,
-                                    );
-                                  } catch (error) {
-                                    print(error.toString());
-                                  }
+                                  cubit.userLogin(
+                                    email: cubit.email.text,
+                                    password: cubit.password.text,
+                                  );
                                 }
                               },
                             ),

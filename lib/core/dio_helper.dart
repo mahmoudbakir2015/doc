@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:doc/core/cashe_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../constant/constants.dart';
@@ -59,11 +60,16 @@ class DioHelper {
   static Future<Response> postData({
     required String endPoint,
     required dynamic data,
+    String? authorization,
   }) {
-    return dio!.post(
-      endPoint,
-      data: data,
-    );
+    return dio!.post(endPoint,
+        data: data,
+        options: Options(headers: {
+          "Authorization": 'Bearer $authorization',
+          'Content-Type': 'application/json',
+          // "lang": CacheHelper.getData(key: "lang") == "ar_EG" ? "ar" : "en",
+          "Accept": "application/json"
+        }));
   }
 
   static Future<Response> getData({

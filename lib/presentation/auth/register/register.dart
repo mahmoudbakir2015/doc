@@ -40,7 +40,11 @@ class _RegisterState extends State<Register> {
             );
           }
           if (state is RegisterFailed) {
-            print(state.errorMessage);
+            AuthCubit cubit = AuthCubit.get(context);
+            cubit.buildToast(
+              msg: state.errorMessage,
+              state: ToastStates.error,
+            );
           }
         },
         builder: (context, state) {
