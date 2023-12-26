@@ -76,20 +76,22 @@ class _RegisterState extends State<Register> {
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: Styles.appPadding),
-                      child: DefaultButton(
-                        text: 'Create Account',
-                        onPressed: () {
-                          if (cubit.formKey.currentState!.validate()) {
-                            cubit.userRegister(
-                              email: cubit.email.text,
-                              name: 'mahmoud',
-                              phone: cubit.phone.text,
-                              password: cubit.password.text,
-                              gender: 0,
-                            );
-                          }
-                        },
-                      ),
+                      child: (state is InitialRegister)
+                          ? const Center(child: CircularProgressIndicator())
+                          : DefaultButton(
+                              text: 'Create Account',
+                              onPressed: () {
+                                if (cubit.formKey.currentState!.validate()) {
+                                  cubit.userRegister(
+                                    email: cubit.email.text,
+                                    name: 'mahmoud',
+                                    phone: cubit.phone.text,
+                                    password: cubit.password.text,
+                                    gender: 0,
+                                  );
+                                }
+                              },
+                            ),
                     ),
                     buildOrDivider(isLogined: false),
                     Padding(
