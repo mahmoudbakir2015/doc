@@ -76,21 +76,25 @@ class Login extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: Styles.appPadding),
-                      child: DefaultButton(
-                        text: 'Login',
-                        onPressed: () {
-                          if (cubit.formKey.currentState!.validate()) {
-                            try {
-                              cubit.userLogin(
-                                email: cubit.email.text,
-                                password: cubit.password.text,
-                              );
-                            } catch (error) {
-                              print(error.toString());
-                            }
-                          }
-                        },
-                      ),
+                      child: (state is InitialLogin)
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : DefaultButton(
+                              text: 'Login',
+                              onPressed: () {
+                                if (cubit.formKey.currentState!.validate()) {
+                                  try {
+                                    cubit.userLogin(
+                                      email: cubit.email.text,
+                                      password: cubit.password.text,
+                                    );
+                                  } catch (error) {
+                                    print(error.toString());
+                                  }
+                                }
+                              },
+                            ),
                     ),
                     buildOrDivider(),
                     Padding(

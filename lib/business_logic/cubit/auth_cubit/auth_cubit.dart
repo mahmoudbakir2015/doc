@@ -15,6 +15,7 @@ class AuthCubit extends Cubit<AuthStates> {
         );
   static AuthCubit get(context) => BlocProvider.of(context);
   TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
   TextEditingController password = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool checkValue = false;
@@ -25,6 +26,7 @@ class AuthCubit extends Cubit<AuthStates> {
     required String email,
     required String password,
   }) {
+    emit(InitialLogin());
     DioHelper.postData(
       data: {
         'email': email,
@@ -56,6 +58,7 @@ class AuthCubit extends Cubit<AuthStates> {
     required String password,
     required int gender,
   }) async {
+    emit(InitialRegister());
     DioHelper.postData(
       data: {
         'name': name,

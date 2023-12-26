@@ -4,6 +4,8 @@ abstract class AuthStates {}
 
 class InitialAuthState extends AuthStates {}
 
+class InitialRegister extends AuthStates {}
+
 class RegisterSuccessed extends AuthStates {
   final AuthModel authModel;
 
@@ -15,6 +17,8 @@ class RegisterFailed extends AuthStates {
 
   RegisterFailed({required this.errorMessage});
 }
+
+class InitialLogin extends AuthStates {}
 
 class LoginSuccessed extends AuthStates {
   final AuthModel authModel;
