@@ -13,6 +13,7 @@ import 'package:doc/widgets/default_button.dart';
 import 'package:doc/widgets/sub_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../widgets/custom_phone_form.dart';
 
 class PersonalInformation extends StatelessWidget {
@@ -64,15 +65,8 @@ class PersonalInformation extends StatelessWidget {
                   CustomListTile(
                     isMain: false,
                     back: () {
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                            builder: (context) => MainScreen(
-                              token:
-                                  CacheHelper.getData(key: 'token').toString(),
-                            ),
-                          ),
-                          (route) => false);
-                      cubit.currentIndex = 0;
+                      Navigator.pop(context);
+                      cubit.changeNav(tap: 4);
                     },
                     text: 'Personal information',
                   ),

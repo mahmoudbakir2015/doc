@@ -27,6 +27,7 @@ class Settings extends StatelessWidget {
             padding: const EdgeInsets.all(Styles.appPadding),
             child: CustomListTile(
               isMain: false,
+              back: () {},
               text: 'Setting',
             ),
           ),
@@ -80,10 +81,11 @@ class Settings extends StatelessWidget {
               listener: (context, state) {
                 if (state is LogoutSuccessed) {
                   Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                        builder: (context) => const Login(),
-                      ),
-                      (route) => false);
+                    MaterialPageRoute(
+                      builder: (context) => const Login(),
+                    ),
+                    (route) => false,
+                  );
                 }
               },
               builder: (context, state) {

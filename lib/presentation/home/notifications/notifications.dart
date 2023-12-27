@@ -1,3 +1,4 @@
+import 'package:doc/business_logic/cubit/home_cubit/home_cubit.dart';
 import 'package:doc/constant/style.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/assets.dart';
@@ -9,12 +10,18 @@ class NotifiactionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppCubit cubit = AppCubit.get(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(Styles.appPadding),
         child: ListView(
           children: [
             CustomListTile(
+              isMain: false,
+              back: () {
+                Navigator.pop(context);
+                cubit.changeNav(tap: 0);
+              },
               text: 'Notification',
               trailing: buildNotifCount(count: '3'),
             ),
