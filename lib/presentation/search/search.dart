@@ -108,42 +108,44 @@ class _SearchViewState extends State<SearchView> {
                         itemCount: state.doctorModel.data!.length,
                       ),
                     )
-                  : ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (ctx, index) {
-                        return ListTile(
-                          leading: const Icon(
-                            Icons.access_time,
-                            color: Color(0xFF9E9E9E),
-                          ),
-                          title: const Text(
-                            'Dental',
-                            style: TextStyle(
-                              color: Color(0xFF9E9E9E),
-                              fontSize: 14,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          trailing: GestureDetector(
-                            onTap: () {
-                              widget.itemCount--;
-                              print(widget.itemCount);
-                            },
-                            child: const Icon(
-                              Icons.close,
+                  : Expanded(
+                      child: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (ctx, index) {
+                          return ListTile(
+                            leading: const Icon(
+                              Icons.access_time,
                               color: Color(0xFF9E9E9E),
                             ),
-                          ),
-                        );
-                      },
-                      separatorBuilder: (ctx, index) {
-                        return const SizedBox(
-                          height: 5,
-                        );
-                      },
-                      itemCount: widget.itemCount,
+                            title: const Text(
+                              'Dental',
+                              style: TextStyle(
+                                color: Color(0xFF9E9E9E),
+                                fontSize: 14,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            trailing: GestureDetector(
+                              onTap: () {
+                                widget.itemCount--;
+                                print(widget.itemCount);
+                              },
+                              child: const Icon(
+                                Icons.close,
+                                color: Color(0xFF9E9E9E),
+                              ),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (ctx, index) {
+                          return const SizedBox(
+                            height: 5,
+                          );
+                        },
+                        itemCount: widget.itemCount,
+                      ),
                     ),
             ],
           ),

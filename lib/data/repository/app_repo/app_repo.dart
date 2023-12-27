@@ -2,6 +2,7 @@
 import 'package:doc/data/model/all_doc_model.dart';
 import 'package:doc/data/model/home_model.dart';
 import 'package:doc/data/model/specialization_model.dart';
+import 'package:doc/data/model/user_model.dart';
 import 'package:doc/data/service/app_service/app_service.dart';
 
 import '../../model/doctor_model.dart';
@@ -52,6 +53,28 @@ class AppRepo {
       await appService.searchDoc(
         authorization: authorization,
         name: name,
+      ),
+    );
+  }
+
+  Future<UserModel> userProfile({
+    required String authorization,
+  }) async {
+    return UserModel.fromJson(
+      await appService.userProfile(
+        authorization: authorization,
+      ),
+    );
+  }
+
+  Future<UserModel> updateProfile({
+    required String authorization,
+    required Map<String, dynamic> data,
+  }) async {
+    return UserModel.fromJson(
+      await appService.updateProfile(
+        authorization: authorization,
+        data: data,
       ),
     );
   }

@@ -13,4 +13,6 @@ class Endpoint {
   static String doctorsearch = 'doctor/doctor-search?name=';
   static String specialization = 'specialization/index';
   static String specializationShow = 'specialization/show/';
+  static String user = 'user/profile';
+  static String updateUser = 'user/update';
 }

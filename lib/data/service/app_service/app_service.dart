@@ -69,4 +69,36 @@ class AppService {
       print(e.toString());
     }
   }
+
+  Future<dynamic> userProfile({
+    required String authorization,
+  }) async {
+    Response response = await DioHelper.getData(
+      endPoint: Endpoint.user,
+      authorization: authorization,
+    );
+    try {
+      print(response.data.toString());
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<dynamic> updateProfile({
+    required String authorization,
+    required Map<String, dynamic> data,
+  }) async {
+    Response response = await DioHelper.postData(
+      endPoint: Endpoint.updateUser,
+      data: data,
+      authorization: authorization,
+    );
+    try {
+      print(response.data.toString());
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }

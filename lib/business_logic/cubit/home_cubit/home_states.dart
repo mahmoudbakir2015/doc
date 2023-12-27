@@ -1,6 +1,7 @@
 import 'package:doc/data/model/all_doc_model.dart';
 import 'package:doc/data/model/doctor_model.dart';
 import 'package:doc/data/model/home_model.dart';
+import 'package:doc/data/model/user_model.dart';
 
 import '../../../data/model/specialization_model.dart';
 
@@ -68,4 +69,28 @@ class FailedSearchDocState extends AppStates {
   final String errorMessage;
 
   FailedSearchDocState({required this.errorMessage});
+}
+
+class SuccessedUserProfileState extends AppStates {
+  final UserModel userModel;
+
+  SuccessedUserProfileState({required this.userModel});
+}
+
+class FailedUserProfileState extends AppStates {
+  final String errorMessage;
+
+  FailedUserProfileState({required this.errorMessage});
+}
+
+class SuccessedUserProfileUpdateState extends AppStates {
+  final UserModel userModel;
+
+  SuccessedUserProfileUpdateState({required this.userModel});
+}
+
+class FailedUserProfileUpdateState extends AppStates {
+  final String errorMessage;
+
+  FailedUserProfileUpdateState({required this.errorMessage});
 }
